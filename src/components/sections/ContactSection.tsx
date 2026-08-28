@@ -16,10 +16,9 @@ import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [acceptedPrivacy, setAcceptedPrivacy] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!acceptedPrivacy) {
@@ -31,33 +30,36 @@ const ContactSection = () => {
       return;
     }
 
-    setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    const formData = new FormData(e.currentTarget);
+    const subject = encodeURIComponent("Consulta desde la web");
+    const body = encodeURIComponent([
+      `Nombre: ${formData.get("name") ?? ""}`,
+      `Correo: ${formData.get("email") ?? ""}`,
+      `Teléfono: ${formData.get("phone") ?? ""}`,
+      `Sede: ${formData.get("sede") ?? "No especificada"}`,
+      `Tipo de consulta: ${formData.get("tipo") ?? "No especificado"}`,
+      "",
+      `Mensaje: ${formData.get("message") ?? ""}`,
+    ].join("\n"));
 
     toast({
-      title: "¡Mensaje enviado!",
-      description: "Nos pondremos en contacto contigo muy pronto.",
+      title: "Consulta preparada",
+      description: "Abrimos tu aplicación de correo para que confirmes el envío.",
     });
 
-    setIsSubmitting(false);
+    window.location.href = `mailto:thenorthofoncopathology@gmail.com?subject=${subject}&body=${body}`;
     (e.target as HTMLFormElement).reset();
     setAcceptedPrivacy(false);
   };
 
   return (
-    <section id="contacto" className="section-padding bg-white">
+    <section id="contacto" className="section-padding bg-[#edf5f6] dark:bg-background">
       <div className="container-custom">
 
         {/* Header */}
-        <AnimatedSection className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-            Contacto
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-3 text-balance">
-            Estamos Aquí Para{" "}
-            <span className="gradient-text">Ayudarte</span>
-          </h2>
-          <p className="text-muted-foreground mt-4 text-base">
+        <AnimatedSection className="mx-auto mb-12 max-w-2xl text-center sm:mb-16">
+          <h2 className="section-title">Estamos aquí para ayudarte</h2>
+          <p className="section-copy mx-auto mt-5">
             Escríbenos por este formulario y te respondemos a la brevedad.
             ¿Prefieres algo más rápido?{" "}
             <span className="font-medium text-foreground">
@@ -67,11 +69,11 @@ const ContactSection = () => {
           </p>
         </AnimatedSection>
 
-        {/* Form — centered */}
+        {/* Centered form */}
         <AnimatedSection className="max-w-2xl mx-auto">
           <form
             onSubmit={handleSubmit}
-            className="bg-card rounded-3xl border card-shadow p-8 md:p-10 space-y-5"
+            className="space-y-5 rounded-[20px] border border-border/75 bg-card p-5 shadow-[0_28px_72px_-46px_rgba(9,49,57,.52)] sm:p-8 md:p-10"
           >
             {/* Row 1 */}
             <div className="grid sm:grid-cols-2 gap-5">
@@ -84,7 +86,7 @@ const ContactSection = () => {
                   name="name"
                   placeholder="Tu nombre completo"
                   required
-                  className="h-12 rounded-xl border-border/60 focus:border-primary transition-colors"
+                  className="h-12 rounded-[12px] border-border bg-background focus:border-primary"
                 />
               </div>
               <div className="space-y-1.5">
@@ -97,7 +99,7 @@ const ContactSection = () => {
                   type="email"
                   placeholder="tu@correo.com"
                   required
-                  className="h-12 rounded-xl border-border/60 focus:border-primary transition-colors"
+                  className="h-12 rounded-[12px] border-border bg-background focus:border-primary"
                 />
               </div>
             </div>
@@ -114,7 +116,7 @@ const ContactSection = () => {
                   type="tel"
                   placeholder="+51 900 000 000"
                   required
-                  className="h-12 rounded-xl border-border/60 focus:border-primary transition-colors"
+                  className="h-12 rounded-[12px] border-border bg-background focus:border-primary"
                 />
               </div>
               <div className="space-y-1.5">
@@ -122,7 +124,7 @@ const ContactSection = () => {
                   Sede de preferencia <span className="text-primary">*</span>
                 </Label>
                 <Select name="sede" required>
-                  <SelectTrigger className="h-12 rounded-xl border-border/60">
+                  <SelectTrigger className="h-12 rounded-[12px] border-border bg-background">
                     <SelectValue placeholder="Selecciona una sede" />
                   </SelectTrigger>
                   <SelectContent>
@@ -143,7 +145,7 @@ const ContactSection = () => {
                 Tipo de consulta
               </Label>
               <Select name="tipo">
-                <SelectTrigger className="h-12 rounded-xl border-border/60">
+                <SelectTrigger className="h-12 rounded-[12px] border-border bg-background">
                   <SelectValue placeholder="¿Cómo podemos ayudarte?" />
                 </SelectTrigger>
                 <SelectContent>
@@ -166,7 +168,7 @@ const ContactSection = () => {
                 placeholder="Cuéntanos en qué podemos ayudarte..."
                 rows={4}
                 required
-                className="resize-none rounded-xl border-border/60 focus:border-primary transition-colors"
+                className="resize-none rounded-[12px] border-border bg-background focus:border-primary"
               />
             </div>
 
@@ -196,20 +198,12 @@ const ContactSection = () => {
             <Button
               type="submit"
               size="lg"
-              className="w-full gradient-bg text-white button-shadow hover:opacity-90 h-14 rounded-xl text-base font-semibold"
-              disabled={isSubmitting}
+              className="h-14 w-full rounded-full bg-primary text-base font-bold text-primary-foreground button-shadow hover:bg-primary/92"
             >
-              {isSubmitting ? (
-                <span className="flex items-center gap-2">
-                  <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  Enviando consulta...
-                </span>
-              ) : (
-                <span className="flex items-center gap-2">
-                  <Send className="w-5 h-5" />
-                  Enviar Consulta por Correo
-                </span>
-              )}
+              <span className="flex items-center gap-2">
+                <Send className="w-5 h-5" />
+                Preparar consulta por correo
+              </span>
             </Button>
 
             <p className="text-center text-xs text-muted-foreground">

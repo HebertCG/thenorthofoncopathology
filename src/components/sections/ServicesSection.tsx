@@ -1,103 +1,93 @@
 import AnimatedSection from "@/components/common/AnimatedSection";
-import {
-  Microscope,
-  Syringe,
-  Scissors,
-  FlaskConical,
-  FileCheck,
-  Users
-} from "lucide-react";
+import { FileCheck, FlaskConical, Microscope, Scissors, Syringe, Users } from "lucide-react";
+
+const services = [
+  {
+    icon: Microscope,
+    title: "Análisis anatomopatológico integral",
+    description: "Estudio microscópico de tejidos oncológicos y no oncológicos con alta precisión diagnóstica.",
+    className: "lg:col-span-7 lg:row-span-2",
+    image: "/diagnostico.jpg",
+  },
+  {
+    icon: Syringe,
+    title: "Biopsias",
+    description: "Biopsia core, punch, incisional y citología de Papanicolaou con procesamiento oportuno.",
+    className: "lg:col-span-5",
+  },
+  {
+    icon: Scissors,
+    title: "Piezas quirúrgicas",
+    description: "Evaluación de márgenes, estadificación TNM y análisis completo de especímenes postoperatorios.",
+    className: "lg:col-span-5",
+  },
+  {
+    icon: FlaskConical,
+    title: "Inmunohistoquímica",
+    description: "Más de 50 marcadores para caracterizar tumores y orientar decisiones terapéuticas.",
+    className: "lg:col-span-5",
+    accent: true,
+  },
+  {
+    icon: FileCheck,
+    title: "Segunda opinión patológica",
+    description: "Revisión experta de tacos, láminas e informes provenientes de otras instituciones.",
+    className: "lg:col-span-7",
+  },
+  {
+    icon: Users,
+    title: "Consulta multidisciplinaria",
+    description: "Discusión de casos complejos entre especialistas para alcanzar una decisión diagnóstica consensuada.",
+    className: "lg:col-span-12",
+    wide: true,
+  },
+];
 
 const ServicesSection = () => {
-  const services = [
-    {
-      icon: Microscope,
-      title: "Análisis Anatomopatológico Integral",
-      description: "Estudio microscópico detallado de tejidos para identificar patologías oncológicas y no oncológicas con la más alta precisión diagnóstica.",
-      features: ["Microscopía avanzada", "Análisis celular", "Diagnóstico preciso"]
-    },
-    {
-      icon: Syringe,
-      title: "Biopsias",
-      description: "Análisis exhaustivo de muestras de tejido obtenidas mediante biopsia para determinar la naturaleza de las lesiones: biopsia core, biopsia punch, biopsia incisional y Papanicolaou.",
-      features: ["Procesamiento rápido", "Técnicas especializadas", "Resultados confiables"]
-    },
-    {
-      icon: Scissors,
-      title: "Piezas Quirúrgicas",
-      description: "Evaluación completa de especímenes quirúrgicos post-operatorios para determinar márgenes y estadificación tumoral: estadiaje de cáncer, apendicectomía, colecistectomías, amputaciones, etc.",
-      features: ["Evaluación completa", "Estadificación TNM", "Márgenes quirúrgicos"]
-    },
-    {
-      icon: FlaskConical,
-      title: "Inmunohistoquímica",
-      description: "Técnicas avanzadas de marcadores moleculares para identificación precisa del tipo tumoral y opciones terapéuticas: inmunohistoquímica, cáncer de mama, neoplasias hemáticas, lesiones epiteliales y contamos con más de 50 marcadores.",
-      features: ["Marcadores específicos", "Perfiles moleculares", "Terapia dirigida"]
-    },
-    {
-      icon: FileCheck,
-      title: "Segunda Opinión Patológica",
-      description: "Revisión experta de diagnósticos previos por nuestro equipo multidisciplinario para confirmar o ajustar el diagnóstico. Revisión de tacos y láminas provenientes de otras instituciones.",
-      features: ["Revisión exhaustiva", "Panel de expertos", "Mayor certeza"]
-    },
-    {
-      icon: Users,
-      title: "Consultas Multidisciplinarias",
-      description: "Sesiones de debate clínico donde nuestro equipo analiza casos complejos para ofrecer el mejor diagnóstico posible.",
-      features: ["Equipo integrado", "Casos complejos", "Decisión consensuada"]
-    },
-  ];
-
-
   return (
-    <section id="servicios" className="section-padding gradient-subtle">
+    <section id="servicios" className="section-padding bg-[#f1f6f7] dark:bg-background">
       <div className="container-custom">
-        <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-            Nuestros Servicios
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-4 text-balance">
-            Servicios Especializados en{" "}
-            <span className="gradient-text">Oncopatología</span>
-          </h2>
-          <p className="text-muted-foreground mt-4">
-            Ofrecemos una gama completa de servicios de diagnóstico anatomopatológico
-            con los más altos estándares de calidad y precisión.
+        <AnimatedSection className="max-w-3xl">
+          <h2 className="section-title">Servicios que conectan precisión y oportunidad</h2>
+          <p className="section-copy mt-5">
+            Una ruta diagnóstica completa, desde la recepción de la muestra hasta la discusión especializada del resultado.
           </p>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="mt-12 grid gap-4 lg:grid-cols-12 lg:auto-rows-[minmax(230px,auto)]">
           {services.map((service, index) => (
-            <AnimatedSection key={index} delay={index * 0.1}>
-              <div className="group h-full bg-card p-8 rounded-2xl border card-shadow hover:card-shadow-hover transition-all duration-300 hover:-translate-y-1">
-                <div className="space-y-5">
-                  <div className="w-14 h-14 rounded-xl gradient-bg flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <service.icon className="w-7 h-7 text-primary-foreground" />
-                  </div>
+            <AnimatedSection key={service.title} delay={index * 0.055} className={service.className}>
+              <article
+                className={`group relative h-full min-h-[230px] overflow-hidden rounded-[20px] border p-6 transition duration-300 hover:-translate-y-1 sm:p-8 ${
+                  service.accent
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border/75 bg-card text-card-foreground shadow-[0_18px_48px_-36px_rgba(9,49,57,.42)] hover:shadow-[0_28px_58px_-34px_rgba(9,49,57,.5)]"
+                } ${service.image ? "min-h-[500px] sm:min-h-[540px]" : ""}`}
+              >
+                {service.image && (
+                  <>
+                    <img src={service.image} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#082f35] via-[#082f35]/66 to-transparent" />
+                  </>
+                )}
 
-                  <div className="space-y-3">
-                    <h3 className="text-xl font-bold text-foreground">{service.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                <div className={`relative flex h-full ${service.image ? "flex-col justify-end text-white" : service.wide ? "flex-col justify-between gap-8 md:flex-row md:items-end" : "flex-col"}`}>
+                  <div className={`grid h-12 w-12 shrink-0 place-items-center rounded-[14px] ${service.accent ? "bg-white/13" : service.image ? "bg-white/14 backdrop-blur" : "bg-primary/9 text-primary"}`}>
+                    <service.icon className="h-6 w-6" strokeWidth={1.7} aria-hidden="true" />
+                  </div>
+                  <div className={`${service.image ? "mt-6" : service.wide ? "md:max-w-[68%]" : "mt-auto pt-10"}`}>
+                    <h3 className={`${service.image ? "text-3xl sm:text-4xl" : "text-xl sm:text-2xl"} text-balance font-extrabold tracking-[-0.025em]`}>
+                      {service.title}
+                    </h3>
+                    <p className={`mt-3 max-w-[56ch] leading-6 ${service.accent || service.image ? "text-white/72" : "text-muted-foreground"}`}>
                       {service.description}
                     </p>
                   </div>
-
-                  <div className="flex flex-wrap gap-2">
-                    {service.features.map((feature, featureIndex) => (
-                      <span
-                        key={featureIndex}
-                        className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary font-medium"
-                      >
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
                 </div>
-              </div>
+              </article>
             </AnimatedSection>
           ))}
         </div>
-
       </div>
     </section>
   );

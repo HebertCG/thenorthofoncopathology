@@ -1,194 +1,167 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion, useScroll, useMotionValueEvent } from "framer-motion";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import logo from "@/assets/logo-brand-removebg-preview.png";
-import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
+
+const navLinks = [
+  { href: "#inicio", label: "Inicio" },
+  { href: "#nosotros", label: "Nosotros" },
+  { href: "#equipo", label: "Equipo" },
+  { href: "#servicios", label: "Servicios" },
+  { href: "#ubicaciones", label: "Sedes" },
+];
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isCompact, setIsCompact] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { scrollY } = useScroll();
+  const reduceMotion = useReducedMotion();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const next = latest > 36;
+    setIsCompact((current) => (current === next ? current : next));
+  });
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Lock body scroll when drawer is open (preserves scroll position)
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      const scrollY = window.scrollY;
-      document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = "100%";
-    } else {
-      const top = document.body.style.top;
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
-      if (top) window.scrollTo(0, parseInt(top) * -1);
-    }
+    if (!isMobileMenuOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     return () => {
-      const top = document.body.style.top;
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
-      if (top) window.scrollTo(0, parseInt(top) * -1);
+      document.body.style.overflow = previousOverflow;
     };
   }, [isMobileMenuOpen]);
 
-  const navLinks = [
-    { href: "#inicio", label: "Inicio" },
-    { href: "#nosotros", label: "Nosotros" },
-    { href: "#servicios", label: "Servicios" },
-    { href: "#ubicaciones", label: "Ubicaciones" },
-    { href: "#contacto", label: "Contacto" },
-  ];
-
   const scrollToSection = (href: string) => {
     setIsMobileMenuOpen(false);
-    // Wait for body scroll-lock to be released before navigating
-    setTimeout(() => {
-      const element = document.querySelector(href);
-      if (element) element.scrollIntoView({ behavior: "smooth" });
-    }, 50);
+    window.setTimeout(() => {
+      document.querySelector(href)?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+    }, 30);
   };
 
   return (
     <>
-      {/* Top Bar */}
-
-
-      {/* Main Header */}
-      <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-md"
-          : "bg-background"
-          }`}
+      <motion.header
+        initial={false}
+        animate={{
+          top: isCompact ? 12 : 0,
+          paddingLeft: isCompact ? 12 : 0,
+          paddingRight: isCompact ? 12 : 0,
+        }}
+        transition={reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 270, damping: 28 }}
+        className="fixed inset-x-0 z-50"
       >
-        <div className="container-custom">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <Link to="/" className="flex items-center">
-              <img
-                src={logo}
-                alt="The North of Oncopathology"
-                className="h-16 md:h-18 w-auto object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                }}
-              />
+        <motion.div
+          initial={false}
+          animate={{
+            borderRadius: isCompact ? 20 : 0,
+            maxWidth: isCompact ? 1240 : 1600,
+            backgroundColor: isCompact ? "rgba(248, 251, 252, 0.92)" : "rgba(248, 251, 252, 0.78)",
+            boxShadow: isCompact ? "0 18px 48px rgba(9, 49, 57, 0.13)" : "0 0 0 rgba(9, 49, 57, 0)",
+          }}
+          transition={reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 250, damping: 30 }}
+          className="mx-auto border border-white/70 backdrop-blur-xl"
+        >
+          <div className="flex h-[72px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+            <Link to="/" aria-label="The North of Oncopathology, inicio" className="shrink-0">
+              <img src={logo} alt="The North of Oncopathology" className="h-12 w-auto object-contain sm:h-14" />
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-8">
+            <nav aria-label="Navegación principal" className="hidden items-center gap-1 lg:flex">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-foreground/80 hover:text-primary font-medium transition-colors relative group"
+                  className="rounded-full px-4 py-2 text-sm font-semibold text-foreground/72 transition-colors hover:bg-primary/8 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
                 </button>
               ))}
             </nav>
 
-            {/* CTA Button */}
-            <div className="hidden lg:flex items-center">
+            <a
+              href="https://wa.me/51938683949?text=Hola%2C%20quiero%20hacer%20una%20consulta"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden items-center gap-2 whitespace-nowrap rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-primary-foreground shadow-[0_10px_28px_rgba(9,94,103,0.22)] transition hover:-translate-y-0.5 hover:bg-primary/92 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:translate-y-px lg:flex"
+            >
+              Solicitar consulta
+              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+
+            <button
+              type="button"
+              aria-label="Abrir menú"
+              aria-expanded={isMobileMenuOpen}
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="grid h-11 w-11 place-items-center rounded-full border border-border bg-background text-foreground shadow-sm transition hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary lg:hidden"
+            >
+              <Menu className="h-5 w-5" aria-hidden="true" />
+            </button>
+          </div>
+        </motion.div>
+      </motion.header>
+
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            className="fixed inset-0 z-[60] bg-foreground/35 backdrop-blur-sm lg:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <motion.aside
+              role="dialog"
+              aria-modal="true"
+              aria-label="Menú principal"
+              initial={reduceMotion ? false : { x: "100%" }}
+              animate={{ x: 0 }}
+              exit={reduceMotion ? { opacity: 0 } : { x: "100%" }}
+              transition={{ type: "spring", stiffness: 260, damping: 30 }}
+              onClick={(event) => event.stopPropagation()}
+              className="ml-auto flex h-full w-[min(88vw,360px)] flex-col bg-background p-5 shadow-2xl"
+            >
+              <div className="flex items-center justify-between border-b border-border/70 pb-5">
+                <img src={logo} alt="" className="h-12 w-auto" />
+                <button
+                  type="button"
+                  aria-label="Cerrar menú"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="grid h-11 w-11 place-items-center rounded-full bg-muted text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                >
+                  <X className="h-5 w-5" aria-hidden="true" />
+                </button>
+              </div>
+
+              <nav className="flex flex-1 flex-col justify-center gap-2" aria-label="Navegación móvil">
+                {navLinks.map((link, index) => (
+                  <motion.button
+                    key={link.href}
+                    initial={reduceMotion ? false : { opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.045 }}
+                    onClick={() => scrollToSection(link.href)}
+                    className="rounded-2xl px-5 py-4 text-left text-xl font-bold text-foreground transition hover:bg-primary/8 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  >
+                    {link.label}
+                  </motion.button>
+                ))}
+              </nav>
+
               <a
                 href="https://wa.me/51938683949?text=Hola%2C%20quiero%20hacer%20una%20consulta"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-primary px-5 py-4 font-bold text-primary-foreground"
               >
-                <Button
-                  size="sm"
-                  className="gradient-bg text-primary-foreground button-shadow hover:opacity-90"
-                >
-                  Solicitar Consulta
-                </Button>
+                Solicitar consulta
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </a>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden p-2 text-foreground"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Drawer — slides in from the right */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <>
-              {/* Backdrop */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm lg:hidden"
-                onClick={() => setIsMobileMenuOpen(false)}
-              />
-
-              {/* Drawer panel */}
-              <motion.div
-                initial={{ x: "100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: "100%" }}
-                transition={{ type: "spring", damping: 28, stiffness: 260 }}
-                className="fixed top-0 right-0 z-50 h-full w-72 bg-background shadow-2xl flex flex-col lg:hidden"
-              >
-                {/* Drawer header */}
-                <div className="flex items-center justify-between px-6 py-5 border-b">
-                  <span className="font-semibold text-foreground">Menú</span>
-                  <button
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="p-1 text-foreground/60 hover:text-foreground transition-colors"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                </div>
-
-                {/* Nav links */}
-                <nav className="flex-1 overflow-y-auto px-6 py-4 space-y-1">
-                  {navLinks.map((link) => (
-                    <button
-                      key={link.href}
-                      onClick={() => scrollToSection(link.href)}
-                      className="block w-full text-left px-3 py-3 rounded-xl text-foreground/80 hover:text-primary hover:bg-primary/5 font-medium transition-colors"
-                    >
-                      {link.label}
-                    </button>
-                  ))}
-                </nav>
-
-                {/* CTA */}
-                <div className="px-6 py-6 border-t">
-                  <a
-                    href="https://wa.me/51938683949?text=Hola%2C%20quiero%20hacer%20una%20consulta"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button
-                      className="w-full gradient-bg text-primary-foreground"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Solicitar Consulta
-                    </Button>
-                  </a>
-                </div>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
-      </header>
+            </motion.aside>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
