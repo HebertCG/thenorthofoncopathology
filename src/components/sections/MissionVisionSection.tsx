@@ -1,57 +1,125 @@
-import AnimatedSection from "@/components/common/AnimatedSection";
 import { Eye, Target } from "lucide-react";
+import AnimatedSection from "@/components/common/AnimatedSection";
+import { spotlightBackground, trackPointer } from "@/lib/pointerSpotlight";
+
+const pillars = [
+  {
+    id: "mision",
+    index: "01",
+    label: "Misión",
+    title: "Nuestra Misión",
+    lead: "Precisión para actuar.",
+    copy: "Brindar diagnósticos precisos, certeros y confiables mediante la anatomía patológica, integrando un enfoque multidisciplinario y de vanguardia para mejorar el manejo del cáncer.",
+    tags: ["Anatomía patológica", "Equipo multidisciplinario", "Diagnóstico de vanguardia"],
+    icon: Target,
+    iconClass: "gradient-bg",
+  },
+  {
+    id: "vision",
+    index: "02",
+    label: "Visión",
+    title: "Nuestra Visión",
+    lead: "Una red sin distancias.",
+    copy: "Ser una red líder, descentralizada y de referencia internacional, que integre inteligencia artificial y estándares globales para un diagnóstico oncológico preciso.",
+    tags: ["Red descentralizada", "Estándares globales"],
+    icon: Eye,
+    iconClass: "bg-[linear-gradient(135deg,hsl(197_62%_33%),hsl(183_56%_48%))]",
+  },
+];
 
 const MissionVisionSection = () => {
   return (
-    <section className="section-padding bg-background">
-      <div className="container-custom">
-        <AnimatedSection className="mx-auto max-w-[1120px]">
-          <div className="relative overflow-hidden rounded-[20px] bg-[#092f35] text-white shadow-[0_34px_80px_-44px_rgba(9,49,57,.68)]">
-            <div className="grid min-h-[520px] lg:grid-cols-[.92fr_1.08fr]">
-              <div className="relative min-h-[280px] overflow-hidden lg:min-h-full">
-                <img
-                  src="/proposito-laboratorio.jpg"
-                  alt="Especialista analizando una lámina histológica en laboratorio"
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#092f35]/76 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#092f35]" />
-              </div>
+    <section id="proposito" className="section-padding relative overflow-hidden bg-background">
+      {/* Atmósfera: dos halos suaves, sin peso visual */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="absolute -left-28 top-4 h-72 w-72 rounded-full bg-primary/[0.07] blur-3xl" />
+        <div className="absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-[hsl(183_56%_48%)]/10 blur-3xl" />
+      </div>
 
-              <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-9 xl:p-10">
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#8fd6d8]">Nuestro propósito</p>
-                <h2 className="mt-3 text-balance text-3xl font-extrabold tracking-[-0.04em] sm:text-4xl lg:text-[2.7rem] lg:leading-[1.02]">
-                  Ciencia rigurosa con impacto humano
-                </h2>
-                <p className="mt-4 max-w-[52ch] leading-7 text-white/72">
-                  Cada muestra representa una decisión importante. Nuestro propósito es convertir evidencia microscópica en información clara y confiable.
-                </p>
+      <div className="container-custom relative">
+        <AnimatedSection className="mx-auto flex max-w-2xl flex-col items-center text-center">
+          <span className="inline-flex items-center gap-2.5 rounded-full border border-primary/20 bg-primary/[0.06] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-primary">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
+            Nuestro propósito
+          </span>
 
-                <div className="mt-6 grid gap-5 xl:grid-cols-2">
-                  <div>
-                    <div className="grid h-10 w-10 place-items-center rounded-[14px] bg-white/10 text-[#9ddddd]">
-                      <Target className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
-                    </div>
-                    <h3 className="mt-3 text-lg font-bold">Nuestra misión</h3>
-                    <p className="mt-2 text-sm leading-6 text-white/68">
-                      Brindar diagnósticos precisos mediante anatomía patológica, integrando un enfoque multidisciplinario y de vanguardia para mejorar el manejo del cáncer.
-                    </p>
-                  </div>
+          <h2 className="section-title mt-6">
+            Guiados por la <span className="gradient-text">Excelencia</span>
+          </h2>
 
-                  <div className="border-t border-white/14 pt-5 xl:border-l xl:border-t-0 xl:pl-5 xl:pt-0">
-                    <div className="grid h-10 w-10 place-items-center rounded-[14px] bg-white/10 text-[#9ddddd]">
-                      <Eye className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
-                    </div>
-                    <h3 className="mt-3 text-lg font-bold">Nuestra visión</h3>
-                    <p className="mt-2 text-sm leading-6 text-white/68">
-                      Ser una red descentralizada de referencia internacional, integrando inteligencia artificial y estándares globales para un diagnóstico oncológico preciso.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <p className="mt-5 text-base leading-7 text-muted-foreground sm:text-lg">
+            Dos compromisos que ordenan cada decisión del laboratorio.
+          </p>
         </AnimatedSection>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:gap-8">
+          {pillars.map((pillar, index) => (
+            <AnimatedSection
+              key={pillar.id}
+              direction={index === 0 ? "left" : "right"}
+              delay={0.08 + index * 0.08}
+              className="h-full"
+            >
+              <article
+                onPointerMove={trackPointer}
+                className="group relative flex h-full flex-col overflow-hidden rounded-[26px] border border-border bg-card p-8 card-shadow transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-1.5 hover:border-primary/25 hover:card-shadow-hover md:p-10"
+              >
+                {/* Foco que sigue al cursor */}
+                <span
+                  aria-hidden="true"
+                  style={{ background: spotlightBackground }}
+                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                />
+
+                {/* Filo superior que se dibuja al pasar el mouse */}
+                <span
+                  aria-hidden="true"
+                  className="gradient-bg absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100"
+                />
+
+                {/* Número fantasma: da profundidad sin añadir ruido */}
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -top-8 right-3 select-none text-[7.5rem] font-black leading-none tracking-tighter text-foreground/[0.04] transition-transform duration-500 ease-out group-hover:-translate-y-1 sm:text-[9rem]"
+                >
+                  {pillar.index}
+                </span>
+
+                <div className="relative flex flex-1 flex-col">
+                  <div className="flex items-center gap-4">
+                    <div
+                      className={`${pillar.iconClass} grid h-14 w-14 place-items-center rounded-2xl text-primary-foreground shadow-lg shadow-primary/20 transition-transform duration-500 ease-out group-hover:scale-105`}
+                    >
+                      <pillar.icon className="h-7 w-7" strokeWidth={1.9} aria-hidden="true" />
+                    </div>
+                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">
+                      {pillar.index} — {pillar.label}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-7 text-2xl font-bold gradient-text">{pillar.title}</h3>
+
+                  <p className="mt-3 text-lg font-semibold leading-7 tracking-[-0.01em] text-foreground">
+                    {pillar.lead}
+                  </p>
+
+                  <p className="mt-3 leading-relaxed text-muted-foreground">{pillar.copy}</p>
+
+                  <ul className="mt-auto flex flex-wrap gap-2 pt-7">
+                    {pillar.tags.map((tag) => (
+                      <li
+                        key={tag}
+                        className="rounded-full border border-border bg-background/70 px-3 py-1.5 text-xs font-semibold text-muted-foreground transition-colors duration-300 group-hover:border-primary/25 group-hover:text-primary"
+                      >
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            </AnimatedSection>
+          ))}
+        </div>
       </div>
     </section>
   );

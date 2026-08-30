@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import type { PanInfo } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
@@ -94,6 +95,11 @@ const teamMembers: TeamMember[] = [
   },
 ];
 
+// Ritmo del carrusel de especialistas y umbrales del gesto de arrastre.
+const AUTOPLAY_DELAY = 3500;
+const SWIPE_DISTANCE = 70;
+const SWIPE_VELOCITY = 380;
+
 const TeamSection = () => {
   const reduceMotion = useReducedMotion();
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -130,11 +136,28 @@ const TeamSection = () => {
     if (reduceMotion || isDesktopHovered) return;
     const autoplayTimer = window.setTimeout(() => {
       selectMember(selectedIndex + 1);
-    }, 5200);
+    }, AUTOPLAY_DELAY);
     return () => window.clearTimeout(autoplayTimer);
   }, [isDesktopHovered, reduceMotion, selectMember, selectedIndex]);
 
   const selectedMember = teamMembers[selectedIndex];
+
+  // Arrastrar la ficha cambia de especialista, igual que el carrusel de portada.
+  const handleDragEnd = useCallback(
+    (_event: unknown, info: PanInfo) => {
+      const { offset, velocity } = info;
+
+      if (offset.x < -SWIPE_DISTANCE || velocity.x < -SWIPE_VELOCITY) {
+        selectMember(selectedIndex + 1);
+        return;
+      }
+
+      if (offset.x > SWIPE_DISTANCE || velocity.x > SWIPE_VELOCITY) {
+        selectMember(selectedIndex - 1);
+      }
+    },
+    [selectMember, selectedIndex],
+  );
 
   const controls = (compact = false) => (
     <div className="flex items-center gap-2">
@@ -161,10 +184,19 @@ const TeamSection = () => {
   return (
     <section id="equipo" className="section-padding overflow-hidden bg-[#eaf3f4] dark:bg-card">
       <div className="container-custom">
-        <AnimatedSection className="mx-auto max-w-3xl text-center">
-          <h2 className="section-title">Especialistas que deciden en equipo</h2>
-          <p className="section-copy mx-auto mt-5">
-            La experiencia individual se potencia con discusión clínica, revisión conjunta y conocimiento especializado.
+        <AnimatedSection className="mx-auto flex max-w-2xl flex-col items-center text-center">
+          <span className="inline-flex items-center gap-2.5 rounded-full border border-primary/20 bg-primary/[0.06] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-primary">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
+            Nuestro equipo
+          </span>
+
+          <h2 className="section-title mt-6">
+            Equipo <span className="gradient-text">Multidisciplinario</span> de Expertos
+          </h2>
+
+          <p className="mt-5 text-base leading-7 text-muted-foreground sm:text-lg">
+            Contamos con un equipo de patólogos oncólogos altamente capacitados, comprometidos con la excelencia
+            diagnóstica y el bienestar del paciente.
           </p>
         </AnimatedSection>
 
@@ -251,6 +283,31 @@ const TeamSection = () => {
             onMouseEnter={() => setIsDesktopHovered(true)}
             onMouseLeave={() => setIsDesktopHovered(false)}
           >
+            <div className="mb-5 grid grid-cols-3 gap-3 xl:grid-cols-6">
+              {teamMembers.map((member, index) => {
+                const active = index === selectedIndex;
+                return (
+                  <button
+                    type="button"
+                    key={member.name}
+                    aria-label={`Mostrar información de ${member.name}`}
+                    aria-current={active ? "true" : undefined}
+                    onClick={() => selectMember(index)}
+                    className={`group grid min-h-[78px] grid-cols-[44px_1fr] items-center gap-3 rounded-[16px] border p-3 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary active:translate-y-px ${
+                      active
+                        ? "border-primary bg-primary text-primary-foreground shadow-[0_14px_32px_-20px_rgba(9,94,103,.72)]"
+                        : "border-white/80 bg-background/80 text-foreground hover:border-primary/35 hover:bg-background"
+                    }`}
+                  >
+                    <span className={`h-11 w-11 overflow-hidden rounded-[12px] ${active ? "bg-white/18" : "bg-[#d7e8ea]"}`}>
+                      <img src={member.image} alt="" loading="lazy" className="h-full w-full object-cover object-top mix-blend-multiply" />
+                    </span>
+                    <span className="min-w-0 text-sm font-extrabold leading-[1.15]">{member.shortName}</span>
+                  </button>
+                );
+              })}
+            </div>
+
             <div className="relative min-h-[520px] overflow-hidden rounded-[20px] border border-white/80 bg-card shadow-[0_34px_90px_-48px_rgba(9,49,57,.55)] xl:min-h-[530px]">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.article
@@ -259,7 +316,12 @@ const TeamSection = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: -22 }}
                   transition={{ duration: 0.48, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute inset-0 grid grid-cols-[minmax(390px,.88fr)_minmax(0,1.12fr)]"
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.16}
+                  dragMomentum={false}
+                  onDragEnd={handleDragEnd}
+                  className="absolute inset-0 grid cursor-grab grid-cols-[minmax(390px,.88fr)_minmax(0,1.12fr)] active:cursor-grabbing"
                 >
                   <div className="relative isolate overflow-hidden bg-[#d7e8ea] [perspective:1400px]">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,.98),rgba(219,235,237,.8)_56%,rgba(9,94,103,.16))]" />
@@ -268,6 +330,7 @@ const TeamSection = () => {
                       src={selectedMember.image}
                       alt={selectedMember.name}
                       loading="lazy"
+                      draggable={false}
                       initial={reduceMotion ? false : { opacity: 0, x: -38, rotateY: 8, scale: 1.025 }}
                       animate={{ opacity: 1, x: 0, rotateY: 0, scale: 1 }}
                       transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
@@ -324,31 +387,6 @@ const TeamSection = () => {
                   </div>
                 </motion.article>
               </AnimatePresence>
-            </div>
-
-            <div className="mt-5 grid grid-cols-3 gap-3 xl:grid-cols-6">
-              {teamMembers.map((member, index) => {
-                const active = index === selectedIndex;
-                return (
-                  <button
-                    type="button"
-                    key={member.name}
-                    aria-label={`Mostrar información de ${member.name}`}
-                    aria-current={active ? "true" : undefined}
-                    onClick={() => selectMember(index)}
-                    className={`group grid min-h-[78px] grid-cols-[44px_1fr] items-center gap-3 rounded-[16px] border p-3 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary active:translate-y-px ${
-                      active
-                        ? "border-primary bg-primary text-primary-foreground shadow-[0_14px_32px_-20px_rgba(9,94,103,.72)]"
-                        : "border-white/80 bg-background/80 text-foreground hover:border-primary/35 hover:bg-background"
-                    }`}
-                  >
-                    <span className={`h-11 w-11 overflow-hidden rounded-[12px] ${active ? "bg-white/18" : "bg-[#d7e8ea]"}`}>
-                      <img src={member.image} alt="" loading="lazy" className="h-full w-full object-cover object-top mix-blend-multiply" />
-                    </span>
-                    <span className="min-w-0 text-sm font-extrabold leading-[1.15]">{member.shortName}</span>
-                  </button>
-                );
-              })}
             </div>
           </div>
         </AnimatedSection>

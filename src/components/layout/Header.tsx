@@ -47,6 +47,7 @@ const Header = () => {
           top: isCompact ? 12 : 0,
           paddingLeft: isCompact ? 12 : 0,
           paddingRight: isCompact ? 12 : 0,
+          backgroundColor: isCompact ? "rgba(248, 251, 252, 0)" : "rgba(248, 251, 252, 1)",
         }}
         transition={reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 270, damping: 28 }}
         className="fixed inset-x-0 z-50"
@@ -56,15 +57,16 @@ const Header = () => {
           animate={{
             borderRadius: isCompact ? 20 : 0,
             maxWidth: isCompact ? 1240 : 1600,
-            backgroundColor: isCompact ? "rgba(248, 251, 252, 0.92)" : "rgba(248, 251, 252, 0.78)",
+            backgroundColor: isCompact ? "rgba(248, 251, 252, 0.92)" : "rgba(248, 251, 252, 0)",
+            borderColor: isCompact ? "rgba(255, 255, 255, 0.7)" : "rgba(255, 255, 255, 0)",
             boxShadow: isCompact ? "0 18px 48px rgba(9, 49, 57, 0.13)" : "0 0 0 rgba(9, 49, 57, 0)",
           }}
           transition={reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 250, damping: 30 }}
-          className="mx-auto border border-white/70 backdrop-blur-xl"
+          className="mx-auto border backdrop-blur-xl"
         >
           <div className="flex h-[72px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-            <Link to="/" aria-label="The North of Oncopathology, inicio" className="shrink-0">
-              <img src={logo} alt="The North of Oncopathology" className="h-12 w-auto object-contain sm:h-14" />
+            <Link to="/" aria-label="The North of Oncopathology, inicio" className="ml-2 shrink-0 sm:ml-3 lg:ml-5">
+              <img src={logo} alt="The North of Oncopathology" className="h-14 w-auto object-contain sm:h-16" />
             </Link>
 
             <nav aria-label="Navegación principal" className="hidden items-center gap-1 lg:flex">

@@ -1,166 +1,134 @@
-import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Clock, Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import logo from "@/assets/logo-brand-removebg-preview.png";
+
+const locations = ["Lima", "Piura", "Chiclayo", "Cajamarca", "Ica", "Ayacucho"];
+
+const services = [
+  { label: "Análisis anatomopatológico", category: "diagnostico" },
+  { label: "Biopsias oncológicas", category: "diagnostico" },
+  { label: "Piezas quirúrgicas", category: "diagnostico" },
+  { label: "Inmunohistoquímica", category: "avanzados" },
+  { label: "Segunda opinión patológica", category: "avanzados" },
+  { label: "Consultas multidisciplinarias", category: "avanzados" },
+] as const;
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const locations = [
-    "Lima", "Piura", "Chiclayo", "Cajamarca", "Ica", "Ayacucho"
-  ];
+  const selectLocation = (city: string) => {
+    window.dispatchEvent(new CustomEvent("select-location", { detail: city }));
+  };
 
-  const services = [
-    "Análisis Anatomopatológico",
-    "Biopsias Oncológicas",
-    "Piezas Quirúrgicas",
-    "Inmunohistoquímica",
-    "Segunda Opinión Patológica",
-    "Consultas Multidisciplinarias"
-  ];
+  const selectServiceCategory = (category: "diagnostico" | "avanzados") => {
+    window.dispatchEvent(new CustomEvent("select-service-category", { detail: category }));
+  };
 
   return (
-    <footer className="bg-foreground text-primary-foreground">
-      {/* Main Footer */}
-      <div className="container-custom py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand Column */}
-          <div className="space-y-6">
-            <img
-              src={logo}
-              alt="The North of Oncopathology"
-              className="h-14 w-auto object-contain"
-            />
-            <p className="text-primary-foreground/80 text-sm leading-relaxed">
-              Empresa descentralizada multicéntrica especializada en estudio anatomopatológico oncológico y no oncológico.
-              Comprometidos con la precisión diagnóstica y la atención oportuna.
+    <footer className="bg-[#062d32] text-white">
+      <div className="container-custom py-14 sm:py-16">
+        <div className="grid gap-10 border-b border-white/12 pb-12 md:grid-cols-2 lg:grid-cols-[1.25fr_1fr_.78fr_1.15fr] lg:gap-12">
+          <div>
+            <a href="#inicio" aria-label="Volver al inicio" className="inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
+              <img src={logo} alt="The North of Oncopathology" className="h-16 w-auto object-contain" />
+            </a>
+            <p className="mt-5 max-w-[34ch] text-sm leading-6 text-white/62">
+              Red multicéntrica especializada en estudio anatomopatológico oncológico y no oncológico, con atención oportuna en seis ciudades del Perú.
             </p>
-            {/* <div className="flex items-center gap-2">
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
-              </span>
-              <span className="text-sm font-medium">Disponible 24/7</span>
-            </div> */}
+            <div className="mt-7 flex items-center gap-3">
+              <a
+                href="https://facebook.com/thenorthoncopathology"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="The North of Oncopathology en Facebook"
+                className="grid h-10 w-10 place-items-center rounded-full border border-white/18 text-white/72 transition hover:border-[#8fd6d8] hover:bg-[#8fd6d8] hover:text-[#062d32] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              >
+                <Facebook className="h-4 w-4" aria-hidden="true" />
+              </a>
+              <a
+                href="https://instagram.com/thenorth.oncopathology"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="The North of Oncopathology en Instagram"
+                className="grid h-10 w-10 place-items-center rounded-full border border-white/18 text-white/72 transition hover:border-[#8fd6d8] hover:bg-[#8fd6d8] hover:text-[#062d32] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              >
+                <Instagram className="h-4 w-4" aria-hidden="true" />
+              </a>
+            </div>
           </div>
 
-          {/* Services Column */}
-          <div className="space-y-6">
-            <h4 className="text-lg font-semibold">Servicios</h4>
-            <ul className="space-y-3">
+          <nav aria-label="Servicios en el pie de página">
+            <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-[#94d9da]">Servicios</h2>
+            <ul className="mt-5 space-y-3">
               {services.map((service) => (
-                <li key={service}>
-                  <Link
-                    to="/#servicios"
-                    className="text-primary-foreground/70 hover:text-primary transition-colors text-sm"
+                <li key={service.label}>
+                  <a
+                    href="#servicios"
+                    onClick={() => selectServiceCategory(service.category)}
+                    className="text-sm text-white/62 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                   >
-                    {service}
-                  </Link>
+                    {service.label}
+                  </a>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Locations Column */}
-          <div className="space-y-6">
-            <h4 className="text-lg font-semibold">Sedes</h4>
-            <ul className="space-y-3">
+          <nav aria-label="Sedes en el pie de página">
+            <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-[#94d9da]">Sedes</h2>
+            <ul className="mt-5 space-y-3">
               {locations.map((location) => (
                 <li key={location}>
-                  <Link
-                    to="/#ubicaciones"
-                    className="text-primary-foreground/70 hover:text-primary transition-colors text-sm flex items-center gap-2"
+                  <a
+                    href="#ubicaciones"
+                    onClick={() => selectLocation(location)}
+                    className="inline-flex items-center gap-2 text-sm text-white/62 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                   >
-                    <MapPin className="w-4 h-4" />
+                    <MapPin className="h-3.5 w-3.5 text-[#94d9da]" aria-hidden="true" />
                     {location}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Contact Column */}
-          <div className="space-y-6">
-            <h4 className="text-lg font-semibold">Contacto</h4>
-            <ul className="space-y-4">
+          <div>
+            <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-[#94d9da]">Contacto</h2>
+            <ul className="mt-5 space-y-4">
               <li>
                 <a
-                  href="https://wa.me/51938683949"
+                  href="https://wa.me/51938683949?text=Hola%2C%20quiero%20hacer%20una%20consulta"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary-foreground/70 hover:text-primary transition-colors text-sm flex items-center gap-3"
+                  className="grid grid-cols-[20px_1fr] gap-3 text-sm text-white/68 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 >
-                  <Phone className="w-5 h-5" />
+                  <Phone className="h-4 w-4 text-[#94d9da]" aria-hidden="true" />
                   +51 938 683 949
                 </a>
               </li>
               <li>
                 <a
                   href="mailto:thenorthofoncopathology@gmail.com"
-                  className="text-primary-foreground/70 hover:text-primary transition-colors text-sm flex items-center gap-3"
+                  className="grid min-w-0 grid-cols-[20px_1fr] gap-3 text-sm text-white/68 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 >
-                  <Mail className="w-5 h-5" />
-                  thenorthofoncopathology@gmail.com
+                  <Mail className="h-4 w-4 text-[#94d9da]" aria-hidden="true" />
+                  <span className="break-all">thenorthofoncopathology@gmail.com</span>
                 </a>
               </li>
-              <li className="flex items-center gap-3 text-primary-foreground/70 text-sm">
-                <Clock className="w-5 h-5" />
-                Atención de 9:00 a.m. a 5:00 p.m., emergencias 24 hrs
+              <li className="grid grid-cols-[20px_1fr] gap-3 text-sm leading-6 text-white/62">
+                <Clock className="mt-0.5 h-4 w-4 text-[#94d9da]" aria-hidden="true" />
+                9:00 a.m. a 5:00 p.m. Emergencias 24 horas.
               </li>
             </ul>
-
-            {/* Social Links */}
-            <div className="flex items-center gap-4 pt-4">
-              <a
-                href="https://facebook.com/thenorthoncopathology"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href="https://instagram.com/thenorth.oncopathology"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all"
-              >
-                <Youtube className="w-5 h-5" />
-              </a>
-            </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-primary-foreground/10">
-        <div className="container-custom py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-primary-foreground/60">
-            © {currentYear} The North of Oncopathology. Todos los derechos reservados.
-          </p>
-          <div className="flex items-center gap-6 text-sm text-primary-foreground/60">
-            <Link to="/privacidad" className="hover:text-primary transition-colors">
-              Política de Privacidad
-            </Link>
-            <Link to="/terminos" className="hover:text-primary transition-colors">
-              Términos y Condiciones
-            </Link>
-          </div>
+        <div className="flex flex-col gap-4 pt-6 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {currentYear} The North of Oncopathology. Todos los derechos reservados.</p>
+          <nav className="flex flex-wrap gap-x-6 gap-y-2" aria-label="Enlaces finales">
+            <a href="#proposito" className="transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">Nuestro propósito</a>
+            <a href="#contacto" className="transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">Contacto</a>
+            <a href="#inicio" className="transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">Volver al inicio</a>
+          </nav>
         </div>
       </div>
     </footer>

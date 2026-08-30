@@ -1,66 +1,76 @@
 import AnimatedSection from "@/components/common/AnimatedSection";
-import { Check, FlaskConical, HeartHandshake, Network } from "lucide-react";
+import AnimatedCounter from "@/components/common/AnimatedCounter";
+import { Building2, Clock, Users, Award } from "lucide-react";
 
 const AboutSection = () => {
+  const stats = [
+    { icon: Building2, value: 6, label: "Sedes en Perú", suffix: "", staticValue: "6" },
+    { icon: Clock, value: 0, label: "Resultados", suffix: "", staticValue: "24 - 48 h" },
+    { icon: Users, value: 15, label: "Especialistas", suffix: "+", staticValue: "15+" },
+    { icon: Award, value: 10, label: "Años de Experiencia", suffix: "+" },
+  ];
+
   return (
-    <section id="nosotros" className="section-padding overflow-hidden bg-background">
+    <section id="nosotros" className="section-padding gradient-subtle">
       <div className="container-custom">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.02fr_.98fr] lg:gap-20">
-          <AnimatedSection direction="left" className="relative min-h-[420px] sm:min-h-[540px]">
-            <div className="absolute left-0 top-0 h-[76%] w-[78%] overflow-hidden rounded-[20px] bg-muted shadow-[0_30px_70px_-38px_rgba(9,49,57,.45)]">
-              <img
-                src="/diagnostico.jpg"
-                alt="Especialistas revisando un diagnóstico de anatomía patológica"
-                loading="lazy"
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <div className="absolute bottom-0 right-0 h-[55%] w-[58%] overflow-hidden rounded-[20px] border-4 border-background bg-card shadow-[0_26px_58px_-30px_rgba(9,49,57,.5)]">
-              <img
-                src="/proposito-laboratorio.jpg"
-                alt="Análisis de una lámina histológica en laboratorio"
-                loading="lazy"
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <div className="absolute bottom-[12%] left-4 max-w-[190px] rounded-[16px] border border-border bg-card p-4 shadow-xl sm:left-8 sm:p-5">
-              <p className="text-3xl font-extrabold tracking-tight text-primary">6 ciudades</p>
-              <p className="mt-1 text-sm leading-5 text-muted-foreground">Un mismo criterio de excelencia diagnóstica.</p>
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Content */}
+          <AnimatedSection direction="left">
+            <div className="space-y-6">
+              <div className="space-y-4">
+                <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+                  Sobre Nosotros
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance">
+                  Líderes en{" "}
+                  <span className="gradient-text">patología oncológica</span>
+                </h2>
+              </div>
+
+              <p className="text-muted-foreground leading-relaxed">
+                <span className="font-semibold text-foreground">THE NORTH OF ONCOPATHOLOGY</span> es una empresa
+                descentralizada multicéntrica con presencia en 6 ciudades del Perú (Lima, Piura, Chiclayo,
+                Cajamarca, Ica y Ayacucho). Nos especializamos en el análisis anatomopatológico (oncológico y no oncológico) de pacientes
+                con cáncer.
+              </p>
+
+              <p className="text-muted-foreground leading-relaxed">
+                Nuestra empresa aglomera un equipo multidisciplinario de patólogos oncólogos, quienes,
+                mediante debate, analizan y resuelven los casos más complejos en oncopatología.
+                Contamos con disponibilidad las 24 horas del día, los 7 días de la semana para recibir
+                sus muestras de biopsias o piezas quirúrgicas.
+              </p>
+
+              <p className="text-muted-foreground leading-relaxed">
+                Estamos comprometidos con la precisión diagnóstica de sus muestras, siguiendo las normas
+                técnicas nacionales e internacionales de control de calidad y en ofrecer resultados en tiempo récord (24/7).
+              </p>
+
+
             </div>
           </AnimatedSection>
 
-          <AnimatedSection direction="right">
-            <div>
-              <h2 className="section-title">La experiencia de un equipo, cerca de ti</h2>
-              <p className="section-copy mt-6">
-                The North of Oncopathology es una red multicéntrica especializada en análisis anatomopatológico oncológico y no oncológico, con presencia en Lima, Piura, Chiclayo, Cajamarca, Ica y Ayacucho.
-              </p>
-              <p className="mt-4 max-w-[65ch] leading-7 text-muted-foreground">
-                Nuestros patólogos analizan en conjunto los casos complejos, siguiendo estándares nacionales e internacionales de control de calidad para entregar resultados precisos y oportunos.
-              </p>
-
-              <div className="mt-8 space-y-4">
-                {[
-                  { icon: Network, title: "Criterio multidisciplinario", copy: "Los casos complejos se debaten entre especialistas." },
-                  { icon: FlaskConical, title: "Calidad en cada muestra", copy: "Protocolos rigurosos desde la recepción hasta el informe." },
-                  { icon: HeartHandshake, title: "Respuesta cercana", copy: "Disponibilidad permanente para pacientes y médicos tratantes." },
-                ].map((item) => (
-                  <div key={item.title} className="grid grid-cols-[44px_1fr] items-start gap-4 border-t border-border/70 pt-4">
-                    <div className="grid h-11 w-11 place-items-center rounded-[14px] bg-primary/9 text-primary">
-                      <item.icon className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
+          {/* Stats Grid */}
+          <AnimatedSection direction="right" delay={0.2}>
+            <div className="grid grid-cols-2 gap-4 sm:gap-6">
+              {stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="bg-card p-4 sm:p-6 rounded-2xl border card-shadow hover:card-shadow-hover transition-all duration-300 group"
+                >
+                  <div className="space-y-3">
+                    <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl gradient-bg flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <stat.icon className="w-5 h-5 sm:w-7 sm:h-7 text-primary-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-foreground">{item.title}</h3>
-                      <p className="mt-1 text-sm leading-6 text-muted-foreground">{item.copy}</p>
+                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
+                        {stat.staticValue ? stat.staticValue : <AnimatedCounter end={stat.value} suffix={stat.suffix} />}
+                      </div>
+                      <p className="text-muted-foreground text-xs sm:text-sm mt-1">{stat.label}</p>
                     </div>
                   </div>
-                ))}
-              </div>
-
-              <div className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary/8 px-4 py-2 text-sm font-semibold text-primary">
-                <Check className="h-4 w-4" aria-hidden="true" />
-                Atención de muestras las 24 horas
-              </div>
+                </div>
+              ))}
             </div>
           </AnimatedSection>
         </div>

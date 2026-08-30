@@ -6,6 +6,8 @@
 
 @layer base {
   :root {
+    /* Altura de la barra fija del Header (h-[72px]) */
+    --header-h: 72px;
     --background: 195 33% 98%;
     --foreground: 194 48% 13%;
     --card: 0 0% 100%;
@@ -124,6 +126,19 @@
   .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
   .scrollbar-hide::-webkit-scrollbar { display: none; }
   .text-balance { text-wrap: balance; }
+}
+
+/* Destello que recorre la ruta entre sedes del mapa (LocationsSection).
+   La ruta mide ~988 unidades del viewBox: un guion corto + un hueco del resto
+   deja un solo punto de luz viajando en bucle. Fuera de @layer para no purgarse. */
+@keyframes route-flow {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: -988; }
+}
+
+.route-flow {
+  stroke-dasharray: 26 962;
+  animation: route-flow 5s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
