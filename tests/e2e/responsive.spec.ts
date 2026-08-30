@@ -22,6 +22,7 @@ test.describe("responsive mobile experience", () => {
 
   test("shows image-backed hero banners on mobile", async ({ page }, testInfo) => {
     await page.setViewportSize({ width: 390, height: 844 });
+    await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/", { waitUntil: "domcontentloaded" });
 
     const cases = [
@@ -74,7 +75,7 @@ test.describe("responsive mobile experience", () => {
     }).toPass({ timeout: 10_000 });
   });
 
-  test("replaces the map with a compact locations list on small screens", async ({ page }, testInfo) => {
+  test("uses a compact locations list with an embedded venue map on small screens", async ({ page }, testInfo) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/", { waitUntil: "domcontentloaded" });
 
@@ -83,13 +84,25 @@ test.describe("responsive mobile experience", () => {
     await expect(locations).toBeVisible();
     await expect(page.getByTestId("desktop-locations")).toBeHidden();
     await expect(page.getByTestId("peru-map")).toBeHidden();
-    await expect(locations.locator("iframe")).toHaveCount(0);
 
-    const ayacuchoButton = locations.getByRole("button", { name: "Ayacucho", exact: true });
-    await ayacuchoButton.click({ force: true });
-    await expect(ayacuchoButton).toHaveAttribute("aria-pressed", "true");
-    await expect(locations.getByRole("heading", { name: "Ayacucho", exact: true })).toBeVisible();
+    const venueMap = locations.getByTestId("mobile-location-map");
+    await expect(venueMap).toBeVisible();
+    await expect(venueMap).toHaveAttribute("title", "Mapa de Google de la sede de Piura");
+    await expect(venueMap).toHaveAttribute("src", /Piura/);
+
+    const icaButton = locations.getByRole("button", { name: "Ica", exact: true });
+    await icaButton.evaluate((button) => button.scrollIntoView({ block: "center" }));
+    await icaButton.click();
+    await expect(icaButton).toHaveAttribute("aria-pressed", "true");
+    await expect(locations.getByRole("heading", { name: "Ica", exact: true })).toBeVisible();
     await expect(locations.getByRole("link", { name: "Ver en mapa" })).toBeVisible();
+    await expect(venueMap).toHaveAttribute("title", "Mapa de Google de la sede de Ica");
+    await expect(venueMap).toHaveAttribute("src", /Ica/);
+
+    await venueMap.scrollIntoViewIfNeeded();
+    const mapElement = await venueMap.elementHandle();
+    const mapFrame = await mapElement?.contentFrame();
+    expect(mapFrame).toBeTruthy();
     await locations.screenshot({ path: testInfo.outputPath(`locations-mobile-${testInfo.project.name}.png`) });
   });
 

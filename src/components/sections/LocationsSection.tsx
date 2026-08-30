@@ -17,7 +17,7 @@ const ROTATION_MS = 5500;
 const mapsSearchUrl = (query: string) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 const mapsEmbedUrl = (query: string) =>
-  `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+  `https://maps.google.com/maps?q=${encodeURIComponent(query)}&output=embed&z=15`;
 
 interface Location {
   city: string;
@@ -230,6 +230,18 @@ const LocationsSection = () => {
                         <p className="mt-1 break-all text-sm font-medium text-foreground">{selected.email}</p>
                       </div>
                     </a>
+                  </div>
+
+                  <div className="mt-5 overflow-hidden rounded-xl border border-border/80 bg-muted/40 shadow-[0_12px_28px_-24px_rgba(9,49,57,.6)]">
+                    <iframe
+                      data-testid="mobile-location-map"
+                      title={`Mapa de Google de la sede de ${selected.city}`}
+                      src={mapsEmbedUrl(selected.query)}
+                      loading="lazy"
+                      allowFullScreen
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="block h-[220px] w-full border-0 saturate-[.92]"
+                    />
                   </div>
                 </motion.div>
               </AnimatePresence>
