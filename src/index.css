@@ -81,6 +81,7 @@
   body {
     @apply bg-background font-sans text-foreground antialiased;
     min-width: 320px;
+    overflow-x: clip;
     font-family: 'Inter', system-ui, sans-serif;
     background-image: radial-gradient(circle at 5% 0%, hsl(186 84% 22% / .055), transparent 28rem);
   }

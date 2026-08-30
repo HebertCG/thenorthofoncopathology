@@ -94,16 +94,27 @@ const locations: Location[] = [
 const LocationsSection = () => {
   const [activeLocation, setActiveLocation] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(() =>
+    typeof window !== "undefined" ? window.matchMedia("(min-width: 1024px)").matches : false,
+  );
   const reduceMotion = useReducedMotion();
   const selected = locations[activeLocation];
 
   useEffect(() => {
-    if (reduceMotion || isPaused) return;
+    const media = window.matchMedia("(min-width: 1024px)");
+    const handleChange = (event: MediaQueryListEvent) => setIsDesktop(event.matches);
+    setIsDesktop(media.matches);
+    media.addEventListener("change", handleChange);
+    return () => media.removeEventListener("change", handleChange);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop || reduceMotion || isPaused) return;
     const interval = window.setInterval(() => {
       setActiveLocation((current) => (current + 1) % locations.length);
     }, ROTATION_MS);
     return () => window.clearInterval(interval);
-  }, [isPaused, reduceMotion]);
+  }, [isDesktop, isPaused, reduceMotion]);
 
   useEffect(() => {
     const handleLocationSelect = (event: Event) => {
@@ -120,7 +131,7 @@ const LocationsSection = () => {
   const selectNext = () => setActiveLocation((current) => (current + 1) % locations.length);
 
   return (
-    <section id="ubicaciones" className="overflow-hidden bg-background py-20 sm:py-24">
+    <section id="ubicaciones" className="overflow-hidden bg-[#f4f8f8] py-20 sm:py-24 lg:bg-background">
       <div className="container-custom">
         <AnimatedSection className="grid items-end gap-7 lg:grid-cols-[.72fr_1.28fr] lg:gap-16">
           <div>
@@ -133,8 +144,101 @@ const LocationsSection = () => {
         </AnimatedSection>
 
         <AnimatedSection className="mt-10 sm:mt-12">
+          <div className="space-y-6 lg:hidden" data-testid="mobile-locations">
+            <div className="rounded-[18px] border border-border/80 bg-card p-2 shadow-[0_18px_48px_-38px_rgba(9,49,57,.5)]">
+              <div className="grid gap-1" role="group" aria-label="Seleccionar sede">
+                {locations.map((location, index) => {
+                  const active = index === activeLocation;
+                  return (
+                    <button
+                      key={location.city}
+                      type="button"
+                      onClick={() => setActiveLocation(index)}
+                      aria-pressed={active}
+                      className={`flex min-h-12 w-full items-center gap-3 rounded-[11px] px-3 py-3 text-left text-sm font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+                        active
+                          ? "gradient-bg text-primary-foreground shadow-sm"
+                          : "text-foreground hover:bg-primary/6"
+                      }`}
+                    >
+                      <MapPin className={`h-4 w-4 shrink-0 ${active ? "text-primary-foreground" : "text-primary"}`} aria-hidden="true" />
+                      {location.city}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="rounded-[18px] border border-border/80 bg-card p-5 shadow-[0_18px_48px_-38px_rgba(9,49,57,.5)] sm:p-7">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`mobile-${selected.city}`}
+                  initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
+                  transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <h3 className="text-2xl font-extrabold tracking-[-0.035em] text-foreground">{selected.city}</h3>
+                    <a
+                      href={mapsSearchUrl(selected.query)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex min-h-10 shrink-0 items-center gap-2 rounded-lg border border-border bg-background px-3 text-xs font-semibold text-foreground transition hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    >
+                      <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                      Ver en mapa
+                    </a>
+                  </div>
+
+                  <div className="mt-5 space-y-3">
+                    <div className="grid grid-cols-[28px_1fr] gap-3 rounded-xl bg-muted/55 p-4">
+                      <MapPin className="mt-0.5 h-4 w-4 text-primary" aria-hidden="true" />
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.1em] text-muted-foreground">Dirección</p>
+                        <p className="mt-1 text-sm font-medium leading-6 text-foreground">{selected.address}</p>
+                        {selected.reference && <p className="mt-1 text-xs leading-5 text-muted-foreground">{selected.reference}</p>}
+                      </div>
+                    </div>
+
+                    <a
+                      href={`tel:${selected.phone.replace(/\s/g, "")}`}
+                      className="grid grid-cols-[28px_1fr] gap-3 rounded-xl bg-muted/55 p-4 transition hover:bg-primary/8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    >
+                      <Phone className="mt-0.5 h-4 w-4 text-primary" aria-hidden="true" />
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.1em] text-muted-foreground">Teléfono</p>
+                        <p className="mt-1 text-sm font-semibold text-foreground">{selected.phone}</p>
+                      </div>
+                    </a>
+
+                    <div className="grid grid-cols-[28px_1fr] gap-3 rounded-xl bg-muted/55 p-4">
+                      <Clock3 className="mt-0.5 h-4 w-4 text-primary" aria-hidden="true" />
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.1em] text-muted-foreground">Horario</p>
+                        <p className="mt-1 text-sm font-medium leading-6 text-foreground">{selected.hours}</p>
+                      </div>
+                    </div>
+
+                    <a
+                      href={`mailto:${selected.email}`}
+                      className="grid min-w-0 grid-cols-[28px_1fr] gap-3 rounded-xl bg-muted/55 p-4 transition hover:bg-primary/8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    >
+                      <Mail className="mt-0.5 h-4 w-4 text-primary" aria-hidden="true" />
+                      <div className="min-w-0">
+                        <p className="text-xs font-bold uppercase tracking-[0.1em] text-muted-foreground">Correo</p>
+                        <p className="mt-1 break-all text-sm font-medium text-foreground">{selected.email}</p>
+                      </div>
+                    </a>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
           <div
-            className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-14"
+            className="hidden gap-10 lg:grid lg:grid-cols-[1fr_1fr] lg:gap-14"
+            data-testid="desktop-locations"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
             onFocus={() => setIsPaused(true)}
@@ -179,6 +283,7 @@ const LocationsSection = () => {
               <div className="relative mt-4 flex min-h-0 flex-1 justify-center">
                 <div className="relative aspect-[1000/1460] h-full max-w-full">
                   <svg
+                    data-testid="peru-map"
                     viewBox={`0 0 ${MAP_W} ${MAP_H}`}
                     className="absolute inset-0 h-full w-full"
                     aria-hidden="true"

@@ -45,25 +45,28 @@ const HeroSection = () => {
     };
   }, [emblaApi, onSelect]);
 
-  const scrollTo = useCallback((index: number) => emblaApi?.scrollTo(index), [emblaApi]);
+  const scrollTo = useCallback(
+    (index: number) => emblaApi?.scrollTo(index, Boolean(reduceMotion)),
+    [emblaApi, reduceMotion],
+  );
 
   return (
     <section id="inicio" className="relative overflow-hidden pt-[var(--header-h)]">
       <div ref={emblaRef} className="overflow-hidden cursor-grab active:cursor-grabbing">
         <div className="flex">
           {/* ── SLIDE 1: Original ── */}
-          <div className="flex-none w-full min-h-[calc(90vh-var(--header-h))] flex items-start pt-12 pb-20 sm:items-center sm:pt-0 sm:pb-0 relative overflow-hidden">
+          <div data-testid="hero-slide-diagnostico" className="flex-none w-full min-h-[calc(90vh-var(--header-h))] flex items-start pt-12 pb-20 sm:items-center sm:pt-0 sm:pb-0 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5" />
             <div className="absolute bottom-20 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
 
-            <div className="absolute right-0 top-0 w-1/2 h-full hidden lg:block">
+            <div className="absolute inset-0 h-full lg:left-auto lg:right-0 lg:w-1/2">
               <img
                 src="/diagnostico.jpg"
                 alt="Diagnóstico Oncológico"
-                className="w-full h-full object-cover"
-                style={{ maskImage: "linear-gradient(to right, transparent 0%, black 35%)" }}
+                className="h-full w-full object-cover object-[62%_center] lg:object-center lg:[mask-image:linear-gradient(to_right,transparent_0%,black_35%)]"
               />
             </div>
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,36,43,.32)_0%,rgba(5,36,43,.7)_48%,rgba(5,36,43,.96)_100%)] lg:hidden" />
 
             <div className="container-custom relative z-10 w-full">
               <div className="lg:w-1/2 pr-4 sm:pr-8">
@@ -74,10 +77,10 @@ const HeroSection = () => {
                     transition={{ duration: 0.6 }}
                     className="space-y-4 sm:space-y-6"
                   >
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight text-balance">
-                      Diagnóstico <span className="gradient-text">Preciso y Oportuno</span> en Oncopatología
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white lg:text-foreground leading-tight text-balance">
+                      Diagnóstico <span className="text-[#9ce0df] lg:bg-clip-text lg:text-transparent lg:[background-image:var(--gradient-primary)]">Preciso y Oportuno</span> en Oncopatología
                     </h1>
-                    <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl">
+                    <p className="text-base sm:text-lg md:text-xl text-white/[.82] lg:text-muted-foreground max-w-xl">
                       Estamos contigo cuando más lo necesitas. Equipo multidisciplinario de expertos comprometidos con la
                       precisión diagnóstica y tu tranquilidad.
                     </p>
@@ -100,7 +103,7 @@ const HeroSection = () => {
                     <Button
                       size="lg"
                       variant="outline"
-                      className="border-2 border-foreground/20 hover:bg-gray-100 hover:border-gray-300 hover:text-foreground text-sm sm:text-base px-5 sm:px-8 h-11 sm:h-14"
+                      className="border-2 border-white/45 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20 hover:text-white lg:border-foreground/20 lg:bg-transparent lg:text-foreground lg:backdrop-blur-none lg:hover:border-gray-300 lg:hover:bg-gray-100 lg:hover:text-foreground text-sm sm:text-base px-5 sm:px-8 h-11 sm:h-14"
                       onClick={() => scrollToSection("#ubicaciones")}
                     >
                       <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
@@ -113,8 +116,13 @@ const HeroSection = () => {
           </div>
 
           {/* ── SLIDE 2: Original ── */}
-          <div className="flex-none w-full min-h-[calc(90vh-var(--header-h))] flex items-start pt-12 pb-20 sm:items-center sm:pt-0 sm:pb-0 relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#1a9b8a] via-[#15a899] to-[#0e9faa]" />
+          <div data-testid="hero-slide-tiempo" className="flex-none w-full min-h-[calc(90vh-var(--header-h))] flex items-start pt-12 pb-20 sm:items-center sm:pt-0 sm:pb-0 relative overflow-hidden">
+            <img
+              src="/proposito-laboratorio.jpg"
+              alt="Laboratorio de diagnóstico oncológico"
+              className="absolute inset-0 h-full w-full object-cover object-[62%_center]"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,105,105,.97)_0%,rgba(10,133,128,.9)_48%,rgba(11,128,137,.62)_100%)] max-lg:bg-[linear-gradient(180deg,rgba(7,85,91,.46)_0%,rgba(7,104,104,.78)_45%,rgba(6,76,82,.97)_100%)]" />
             <div className="absolute top-10 right-10 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
             <div className="absolute bottom-10 left-10 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
 
@@ -204,18 +212,18 @@ const HeroSection = () => {
           </div>
 
           {/* ── SLIDE 3: Original ── */}
-          <div className="flex-none w-full min-h-[calc(90vh-var(--header-h))] flex items-start pt-12 pb-20 sm:items-center sm:pt-0 sm:pb-0 relative overflow-hidden">
+          <div data-testid="hero-slide-futuro" className="flex-none w-full min-h-[calc(90vh-var(--header-h))] flex items-start pt-12 pb-20 sm:items-center sm:pt-0 sm:pb-0 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5" />
             <div className="absolute bottom-20 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
 
-            <div className="absolute right-0 top-0 w-1/2 h-full hidden lg:block">
+            <div className="absolute inset-0 h-full lg:left-auto lg:right-0 lg:w-1/2">
               <img
                 src="/futuro-de-oncologia.jpg"
                 alt="Futuro de la Oncología"
-                className="w-full h-full object-cover"
-                style={{ maskImage: "linear-gradient(to right, transparent 0%, black 35%)" }}
+                className="h-full w-full object-cover object-[60%_center] lg:object-center lg:[mask-image:linear-gradient(to_right,transparent_0%,black_35%)]"
               />
             </div>
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,36,43,.24)_0%,rgba(5,36,43,.66)_48%,rgba(5,36,43,.96)_100%)] lg:hidden" />
 
             <div className="container-custom relative z-10 w-full">
               <div className="lg:w-1/2 pr-4 sm:pr-8">
@@ -226,8 +234,8 @@ const HeroSection = () => {
                   className="space-y-5 sm:space-y-6"
                 >
                   <blockquote className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance">
-                    <span className="gradient-text">Somos el futuro de la oncología.</span>{" "}
-                    <span className="text-foreground">Nos encuentras en Piura y en otros 6 departamentos del Perú</span>
+                    <span className="text-[#9ce0df] lg:bg-clip-text lg:text-transparent lg:[background-image:var(--gradient-primary)]">Somos el futuro de la oncología.</span>{" "}
+                    <span className="text-white lg:text-foreground">Nos encuentras en Piura y en otros 6 departamentos del Perú</span>
                   </blockquote>
 
                   <div className="flex flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4">
@@ -242,7 +250,7 @@ const HeroSection = () => {
                     <Button
                       size="lg"
                       variant="outline"
-                      className="border-2 border-foreground/20 hover:bg-gray-100 hover:border-gray-300 hover:text-foreground text-sm sm:text-base px-5 sm:px-8 h-11 sm:h-14"
+                      className="border-2 border-white/45 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20 hover:text-white lg:border-foreground/20 lg:bg-transparent lg:text-foreground lg:backdrop-blur-none lg:hover:border-gray-300 lg:hover:bg-gray-100 lg:hover:text-foreground text-sm sm:text-base px-5 sm:px-8 h-11 sm:h-14"
                       onClick={() => scrollToSection("#ubicaciones")}
                     >
                       <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
@@ -278,7 +286,7 @@ const HeroSection = () => {
           </div>
 
           {/* ── SLIDE 5: Equipo médico ── */}
-          <div className="flex-none w-full min-h-[calc(90vh-var(--header-h))] flex items-start pt-12 pb-20 sm:items-center sm:pt-0 sm:pb-0 relative overflow-hidden">
+          <div data-testid="hero-slide-equipo" className="flex-none w-full min-h-[calc(90vh-var(--header-h))] flex items-start pt-12 pb-20 sm:items-center sm:pt-0 sm:pb-0 relative overflow-hidden">
             <img
               src="/equipo-oncopatologia-hero-v3.jpg"
               alt="Equipo de médicos especialistas de The North of Oncopathology"
@@ -339,7 +347,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2 rounded-full bg-black/15 px-2 py-1.5 backdrop-blur-sm lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
         {slides.map((slide, index) => (
           <button
             key={slide.id}
@@ -348,7 +356,7 @@ const HeroSection = () => {
             aria-label={`Ir a: ${slide.label}`}
             aria-current={index === selectedIndex ? "true" : undefined}
             className={`transition-all duration-300 rounded-full ${
-              index === selectedIndex ? "w-8 h-3 bg-primary" : "w-3 h-3 bg-foreground/30 hover:bg-foreground/50"
+              index === selectedIndex ? "w-8 h-3 bg-white lg:bg-primary" : "w-3 h-3 bg-white/45 hover:bg-white/70 lg:bg-foreground/30 lg:hover:bg-foreground/50"
             }`}
           />
         ))}
