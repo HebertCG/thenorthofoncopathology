@@ -131,7 +131,7 @@ const LocationsSection = () => {
   const selectNext = () => setActiveLocation((current) => (current + 1) % locations.length);
 
   return (
-    <section id="ubicaciones" className="overflow-hidden bg-[#f9f8f3] py-20 sm:py-24 lg:bg-background">
+    <section id="ubicaciones" className="overflow-hidden bg-[#f9f9f3] py-20 sm:py-24 lg:bg-background">
       <div className="container-custom">
         <AnimatedSection className="grid items-end gap-7 lg:grid-cols-[.72fr_1.28fr] lg:gap-16">
           <div>
@@ -262,7 +262,7 @@ const LocationsSection = () => {
             <div className="relative isolate flex min-h-[610px] flex-col">
               <motion.div
                 aria-hidden="true"
-                className="absolute left-1/2 top-1/3 -z-10 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full bg-[#d34545]/20 blur-3xl"
+                className="absolute left-1/2 top-1/3 -z-10 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full bg-[#b33b0b]/16 blur-3xl"
                 animate={reduceMotion ? {} : { x: [0, 80, 0], y: [0, 45, 0] }}
                 transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
               />
@@ -302,42 +302,39 @@ const LocationsSection = () => {
                     focusable="false"
                   >
                     <defs>
-                      <linearGradient id="peru-fill" x1="0" y1="0" x2="0.9" y2="1">
-                        <stop offset="0%" stopColor="#c01414" />
-                        <stop offset="55%" stopColor="#5c0f22" />
-                        <stop offset="100%" stopColor="#140720" />
-                      </linearGradient>
-                      <pattern id="peru-grain" width="30" height="30" patternUnits="userSpaceOnUse">
-                        <circle cx="4" cy="4" r="1.8" fill="#e9d1a1" fillOpacity="0.2" />
-                      </pattern>
                       <clipPath id="peru-clip">
                         <path d={PERU_PATH} />
                       </clipPath>
                     </defs>
 
                     {/* Sombra proyectada: despega el país del fondo */}
-                    <path d={PERU_PATH} fill="#292244" opacity="0.16" transform="translate(16 22)" />
+                    <path d={PERU_PATH} fill="#223644" opacity="0.16" transform="translate(16 22)" />
 
-                    {/* Masa del país */}
-                    <motion.path
-                      d={PERU_PATH}
-                      fill="url(#peru-fill)"
+                    {/* Relieve real del Perú. Va recortado al trazado propio (IoU .97 con
+                        la silueta de la imagen), de modo que el borde queda limpio y los
+                        marcadores siguen cayendo en sus coordenadas proyectadas. */}
+                    <motion.g
+                      clipPath="url(#peru-clip)"
                       initial={reduceMotion ? false : { opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       viewport={{ once: true, amount: 0.3 }}
                       transition={{ duration: 0.9, delay: 0.35, ease: "easeOut" }}
-                    />
-
-                    {/* Trama de puntos: textura cartográfica recortada al contorno */}
-                    <g clipPath="url(#peru-clip)">
-                      <rect width={MAP_W} height={MAP_H} fill="url(#peru-grain)" />
-                    </g>
+                    >
+                      <image
+                        href="/mapa-peru.webp"
+                        x="0"
+                        y="0"
+                        width={MAP_W}
+                        height={MAP_H}
+                        preserveAspectRatio="none"
+                      />
+                    </motion.g>
 
                     {/* El contorno se dibuja solo al entrar en pantalla */}
                     <motion.path
                       d={PERU_PATH}
                       fill="none"
-                      stroke="#f5ce81"
+                      stroke="#0f3049"
                       strokeWidth="3.5"
                       strokeLinejoin="round"
                       initial={reduceMotion ? false : { pathLength: 0, opacity: 0 }}
@@ -350,7 +347,7 @@ const LocationsSection = () => {
                     <motion.path
                       d={ROUTE_PATH}
                       fill="none"
-                      stroke="#f9e3b8"
+                      stroke="#841b1a"
                       strokeWidth="4"
                       strokeLinecap="round"
                       strokeDasharray="10 16"
@@ -366,7 +363,7 @@ const LocationsSection = () => {
                         d={ROUTE_PATH}
                         className="route-flow"
                         fill="none"
-                        stroke="#f8f6f1"
+                        stroke="#b33b0b"
                         strokeWidth="6"
                         strokeLinecap="round"
                       />
@@ -397,13 +394,13 @@ const LocationsSection = () => {
                           <>
                             <motion.span
                               aria-hidden="true"
-                              className="absolute inset-0 m-auto h-5 w-5 rounded-full border-2 border-[#efdfbe]"
+                              className="absolute inset-0 m-auto h-5 w-5 rounded-full border-2 border-[#b33b0b]"
                               animate={{ scale: [1, 2.6], opacity: [0.85, 0] }}
                               transition={{ duration: 1.9, repeat: Infinity, ease: "easeOut" }}
                             />
                             <motion.span
                               aria-hidden="true"
-                              className="absolute inset-0 m-auto h-5 w-5 rounded-full border border-[#e2c385]"
+                              className="absolute inset-0 m-auto h-5 w-5 rounded-full border border-[#841b1a]"
                               animate={{ scale: [1, 3.4], opacity: [0.55, 0] }}
                               transition={{ duration: 1.9, delay: 0.6, repeat: Infinity, ease: "easeOut" }}
                             />
@@ -413,8 +410,8 @@ const LocationsSection = () => {
                         <span
                           className={`relative grid h-5 w-5 place-items-center rounded-full border shadow-[0_8px_20px_rgba(9,49,57,.35)] transition-transform duration-300 ${
                             active
-                              ? "scale-110 border-[#f8f6f1] bg-white text-[#292244]"
-                              : "border-white/90 bg-[#322954] text-white hover:scale-125"
+                              ? "scale-110 border-[#f7f7f2] bg-white text-[#223644]"
+                              : "border-white/90 bg-[#294354] text-white hover:scale-125"
                           }`}
                         >
                           <MapPin className="h-3 w-3" aria-hidden="true" />
@@ -428,7 +425,7 @@ const LocationsSection = () => {
                               initial={reduceMotion ? false : { opacity: 0, y: 6, scale: 0.92 }}
                               animate={{ opacity: 1, y: 0, scale: 1 }}
                               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                              className="block whitespace-nowrap rounded-full bg-white px-3 py-1.5 text-xs font-bold text-[#292244] shadow-[0_8px_22px_rgba(9,49,57,.3)]"
+                              className="block whitespace-nowrap rounded-full bg-white px-3 py-1.5 text-xs font-bold text-[#223644] shadow-[0_8px_22px_rgba(9,49,57,.3)]"
                             >
                               {location.city}
                             </motion.span>
@@ -442,10 +439,10 @@ const LocationsSection = () => {
             </div>
 
             {/* ── Ficha de la sede ── */}
-            <div className="flex min-h-[610px] flex-col rounded-[22px] bg-[#1c172f] p-6 text-white shadow-[0_34px_76px_-46px_rgba(9,49,57,.7)] sm:p-9 lg:p-10">
+            <div className="flex min-h-[610px] flex-col rounded-[22px] bg-[#17252f] p-6 text-white shadow-[0_34px_76px_-46px_rgba(9,49,57,.7)] sm:p-9 lg:p-10">
               <div className="flex items-center justify-between gap-5 border-b border-white/15 pb-5">
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#e4c68b]">Sede seleccionada</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#efac80]">Sede seleccionada</p>
                   <p className="mt-2 text-sm text-white/55">Atención local, respaldo nacional</p>
                 </div>
                 <div className="flex gap-2">
@@ -453,7 +450,7 @@ const LocationsSection = () => {
                     type="button"
                     onClick={selectPrevious}
                     aria-label="Ver sede anterior"
-                    className="grid h-10 w-10 place-items-center rounded-full border border-white/25 text-white transition hover:bg-white hover:text-[#1c172f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                    className="grid h-10 w-10 place-items-center rounded-full border border-white/25 text-white transition hover:bg-white hover:text-[#17252f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                   >
                     <ArrowLeft className="h-4 w-4" aria-hidden="true" />
                   </button>
@@ -461,7 +458,7 @@ const LocationsSection = () => {
                     type="button"
                     onClick={selectNext}
                     aria-label="Ver sede siguiente"
-                    className="grid h-10 w-10 place-items-center rounded-full border border-white/25 text-white transition hover:bg-white hover:text-[#1c172f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                    className="grid h-10 w-10 place-items-center rounded-full border border-white/25 text-white transition hover:bg-white hover:text-[#17252f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                   >
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </button>
@@ -481,7 +478,7 @@ const LocationsSection = () => {
 
                   <div className="mt-6 divide-y divide-white/15 border-y border-white/15">
                     <div className="grid grid-cols-[26px_1fr] gap-4 py-4">
-                      <MapPin className="mt-0.5 h-5 w-5 text-[#e4c68b]" strokeWidth={1.7} aria-hidden="true" />
+                      <MapPin className="mt-0.5 h-5 w-5 text-[#efac80]" strokeWidth={1.7} aria-hidden="true" />
                       <div>
                         <p className="text-xs font-bold uppercase tracking-[0.12em] text-white/48">Dirección</p>
                         <p className="mt-1.5 font-semibold leading-6 text-white/92">{selected.address}</p>
@@ -493,7 +490,7 @@ const LocationsSection = () => {
                       href={`tel:${selected.phone.replace(/\s/g, "")}`}
                       className="grid grid-cols-[26px_1fr] gap-4 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                     >
-                      <Phone className="mt-0.5 h-5 w-5 text-[#e4c68b]" strokeWidth={1.7} aria-hidden="true" />
+                      <Phone className="mt-0.5 h-5 w-5 text-[#efac80]" strokeWidth={1.7} aria-hidden="true" />
                       <div>
                         <p className="text-xs font-bold uppercase tracking-[0.12em] text-white/48">Teléfono</p>
                         <p className="mt-1.5 font-semibold text-white/92">{selected.phone}</p>
@@ -501,7 +498,7 @@ const LocationsSection = () => {
                     </a>
 
                     <div className="grid grid-cols-[26px_1fr] gap-4 py-4">
-                      <Clock3 className="mt-0.5 h-5 w-5 text-[#e4c68b]" strokeWidth={1.7} aria-hidden="true" />
+                      <Clock3 className="mt-0.5 h-5 w-5 text-[#efac80]" strokeWidth={1.7} aria-hidden="true" />
                       <div>
                         <p className="text-xs font-bold uppercase tracking-[0.12em] text-white/48">Horario</p>
                         <p className="mt-1.5 font-semibold leading-6 text-white/92">{selected.hours}</p>
@@ -510,7 +507,7 @@ const LocationsSection = () => {
                   </div>
 
                   {/* Mapa real de la sede seleccionada */}
-                  <div className="mt-6 overflow-hidden rounded-[14px] border border-white/15 bg-[#231d3b]">
+                  <div className="mt-6 overflow-hidden rounded-[14px] border border-white/15 bg-[#1d2f3b]">
                     <iframe
                       title={`Mapa de la sede de ${selected.city}`}
                       src={mapsEmbedUrl(selected.query)}
@@ -524,7 +521,7 @@ const LocationsSection = () => {
                     href={`mailto:${selected.email}`}
                     className="mt-5 inline-flex min-w-0 items-center gap-3 text-sm font-semibold text-white/68 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                   >
-                    <Mail className="h-4 w-4 shrink-0 text-[#e4c68b]" aria-hidden="true" />
+                    <Mail className="h-4 w-4 shrink-0 text-[#efac80]" aria-hidden="true" />
                     <span className="min-w-0 break-all">{selected.email}</span>
                   </a>
 
@@ -532,7 +529,7 @@ const LocationsSection = () => {
                     href={mapsSearchUrl(selected.query)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-auto inline-flex min-h-12 w-fit items-center gap-2 rounded-full bg-[#ebe8dd] px-6 py-3 font-bold text-[#1c172f] transition hover:-translate-y-0.5 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white active:translate-y-px"
+                    className="mt-auto inline-flex min-h-12 w-fit items-center gap-2 rounded-full bg-[#ebebdd] px-6 py-3 font-bold text-[#17252f] transition hover:-translate-y-0.5 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white active:translate-y-px"
                   >
                     Cómo llegar
                     <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
@@ -546,7 +543,7 @@ const LocationsSection = () => {
                     {index === activeLocation && (
                       <motion.span
                         key={`${activeLocation}-${isPaused}`}
-                        className="block h-full origin-left bg-[#e3c487]"
+                        className="block h-full origin-left bg-[#efa97b]"
                         initial={{ scaleX: 0 }}
                         animate={{ scaleX: isPaused || reduceMotion ? 0 : 1 }}
                         transition={{ duration: isPaused || reduceMotion ? 0 : ROTATION_MS / 1000, ease: "linear" }}

@@ -4,7 +4,7 @@ import { spotlightBackground, trackPointer } from "@/lib/pointerSpotlight";
 
 // Se alternan dos degradados de marca para que la cuadrícula no quede plana.
 const TEAL = "gradient-bg";
-const BLUE = "bg-[linear-gradient(135deg,hsl(254_80%_9%),hsl(0_92%_40%))]";
+const BLUE = "bg-[linear-gradient(135deg,hsl(72_45%_22%),hsl(17_88%_42%))]";
 
 const features = [
   {
@@ -53,7 +53,7 @@ const WhyChooseUsSection = () => {
       {/* Atmósfera: dos halos suaves, sin peso visual */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="absolute -left-32 top-16 h-80 w-80 rounded-full bg-primary/[0.06] blur-3xl" />
-        <div className="absolute -right-28 bottom-8 h-96 w-96 rounded-full bg-[hsl(37_93%_56%)]/14 blur-3xl" />
+        <div className="absolute -right-28 bottom-8 h-96 w-96 rounded-full bg-[hsl(17_88%_45%)]/12 blur-3xl" />
       </div>
 
       <div className="container-custom relative">
