@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion, useReducedMotion, useScroll, useMotionValueEvent } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import logo from "@/assets/logo-brand-removebg-preview.png";
+import logo from "@/assets/logo-tnm-red.png";
 
 const navLinks = [
   { href: "#inicio", label: "Inicio" },
@@ -66,7 +66,7 @@ const Header = () => {
         >
           <div className="flex h-[72px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
             <Link to="/" aria-label="The North of Oncopathology, inicio" className="ml-2 shrink-0 sm:ml-3 lg:ml-5">
-              <img src={logo} alt="The North of Oncopathology" className="h-14 w-auto object-contain sm:h-16" />
+              <img src={logo} alt="TNM · The North Medical" className="h-10 w-auto object-contain sm:h-12" />
             </Link>
 
             <nav aria-label="Navegación principal" className="hidden items-center gap-1 lg:flex">
@@ -125,7 +125,7 @@ const Header = () => {
               className="ml-auto flex h-full w-[min(88vw,360px)] flex-col bg-background p-5 shadow-2xl"
             >
               <div className="flex items-center justify-between border-b border-border/70 pb-5">
-                <img src={logo} alt="" className="h-12 w-auto" />
+                <img src={logo} alt="" className="h-9 w-auto" />
                 <button
                   type="button"
                   aria-label="Cerrar menú"

@@ -115,7 +115,7 @@ const ServicesSection = () => {
   };
 
   return (
-    <section id="servicios" className="overflow-hidden bg-[#f1f6f7] py-20 dark:bg-background sm:py-24">
+    <section id="servicios" className="overflow-hidden bg-[#f6f2f2] py-20 dark:bg-background sm:py-24">
       <div className="container-custom">
         <AnimatedSection>
           <h2 className="section-title text-balance">Servicios Especializados en Oncopatología</h2>
@@ -191,7 +191,7 @@ const ServicesSection = () => {
                   ))}
 
                   <div className="min-w-0 shrink-0 grow-0 basis-[86%] pl-4 sm:basis-1/2 lg:block lg:basis-auto lg:pl-0">
-                    <aside className="flex h-full min-h-[475px] flex-col overflow-hidden rounded-[18px] bg-[#0b535b] text-white shadow-[0_24px_56px_-38px_rgba(9,49,57,.8)]">
+                    <aside className="flex h-full min-h-[475px] flex-col overflow-hidden rounded-[18px] bg-[#442227] text-white shadow-[0_24px_56px_-38px_rgba(9,49,57,.8)]">
                       <div className="h-52 overflow-hidden">
                         <img
                           src="/futuro-oncologico-esta-aqui.jpg"
@@ -201,7 +201,7 @@ const ServicesSection = () => {
                         />
                       </div>
                       <div className="flex flex-1 flex-col p-6">
-                        <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#9cdddd]">Red especializada</p>
+                        <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#d3a6ac]">Red especializada</p>
                         <h3 className="mt-3 text-2xl font-extrabold leading-tight tracking-[-0.03em]">Más conocimiento detrás de cada resultado</h3>
                         <p className="mt-3 text-sm leading-6 text-white/72">
                           Casos complejos revisados por un equipo conectado en seis sedes.
@@ -209,7 +209,7 @@ const ServicesSection = () => {
                         <button
                           type="button"
                           onClick={scrollToContact}
-                          className="mt-auto inline-flex h-11 w-11 items-center justify-center self-end rounded-full border border-white/35 text-white transition hover:bg-white hover:text-[#0b535b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                          className="mt-auto inline-flex h-11 w-11 items-center justify-center self-end rounded-full border border-white/35 text-white transition hover:bg-white hover:text-[#442227] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                           aria-label="Solicitar orientación profesional"
                         >
                           <ArrowRight className="h-5 w-5" aria-hidden="true" />

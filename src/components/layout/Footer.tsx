@@ -1,5 +1,5 @@
 import { Clock, Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
-import logo from "@/assets/logo-brand-removebg-preview.png";
+import logo from "@/assets/logo-tnm-white.png";
 
 const locations = ["Lima", "Piura", "Chiclayo", "Cajamarca", "Ica", "Ayacucho"];
 
@@ -24,12 +24,12 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#062d32] text-white">
+    <footer className="bg-[#261216] text-white">
       <div className="container-custom py-14 sm:py-16">
         <div className="grid gap-10 border-b border-white/12 pb-12 md:grid-cols-2 lg:grid-cols-[1.25fr_1fr_.78fr_1.15fr] lg:gap-12">
           <div>
             <a href="#inicio" aria-label="Volver al inicio" className="inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
-              <img src={logo} alt="The North of Oncopathology" className="h-16 w-auto object-contain" />
+              <img src={logo} alt="TNM · The North Medical" className="h-14 w-auto object-contain" />
             </a>
             <p className="mt-5 max-w-[34ch] text-sm leading-6 text-white/62">
               Red multicéntrica especializada en estudio anatomopatológico oncológico y no oncológico, con atención oportuna en seis ciudades del Perú.
@@ -40,7 +40,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="The North of Oncopathology en Facebook"
-                className="grid h-10 w-10 place-items-center rounded-full border border-white/18 text-white/72 transition hover:border-[#8fd6d8] hover:bg-[#8fd6d8] hover:text-[#062d32] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="grid h-10 w-10 place-items-center rounded-full border border-white/18 text-white/72 transition hover:border-[#cd9aa1] hover:bg-[#cd9aa1] hover:text-[#261216] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 <Facebook className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -49,7 +49,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="The North of Oncopathology en Instagram"
-                className="grid h-10 w-10 place-items-center rounded-full border border-white/18 text-white/72 transition hover:border-[#8fd6d8] hover:bg-[#8fd6d8] hover:text-[#062d32] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="grid h-10 w-10 place-items-center rounded-full border border-white/18 text-white/72 transition hover:border-[#cd9aa1] hover:bg-[#cd9aa1] hover:text-[#261216] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 <Instagram className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -57,7 +57,7 @@ const Footer = () => {
           </div>
 
           <nav aria-label="Servicios en el pie de página">
-            <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-[#94d9da]">Servicios</h2>
+            <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-[#cf9fa5]">Servicios</h2>
             <ul className="mt-5 space-y-3">
               {services.map((service) => (
                 <li key={service.label}>
@@ -74,7 +74,7 @@ const Footer = () => {
           </nav>
 
           <nav aria-label="Sedes en el pie de página">
-            <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-[#94d9da]">Sedes</h2>
+            <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-[#cf9fa5]">Sedes</h2>
             <ul className="mt-5 space-y-3">
               {locations.map((location) => (
                 <li key={location}>
@@ -83,7 +83,7 @@ const Footer = () => {
                     onClick={() => selectLocation(location)}
                     className="inline-flex items-center gap-2 text-sm text-white/62 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                   >
-                    <MapPin className="h-3.5 w-3.5 text-[#94d9da]" aria-hidden="true" />
+                    <MapPin className="h-3.5 w-3.5 text-[#cf9fa5]" aria-hidden="true" />
                     {location}
                   </a>
                 </li>
@@ -92,7 +92,7 @@ const Footer = () => {
           </nav>
 
           <div>
-            <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-[#94d9da]">Contacto</h2>
+            <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-[#cf9fa5]">Contacto</h2>
             <ul className="mt-5 space-y-4">
               <li>
                 <a
@@ -101,7 +101,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="grid grid-cols-[20px_1fr] gap-3 text-sm text-white/68 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 >
-                  <Phone className="h-4 w-4 text-[#94d9da]" aria-hidden="true" />
+                  <Phone className="h-4 w-4 text-[#cf9fa5]" aria-hidden="true" />
                   +51 938 683 949
                 </a>
               </li>
@@ -110,12 +110,12 @@ const Footer = () => {
                   href="mailto:thenorthofoncopathology@gmail.com"
                   className="grid min-w-0 grid-cols-[20px_1fr] gap-3 text-sm text-white/68 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 >
-                  <Mail className="h-4 w-4 text-[#94d9da]" aria-hidden="true" />
+                  <Mail className="h-4 w-4 text-[#cf9fa5]" aria-hidden="true" />
                   <span className="break-all">thenorthofoncopathology@gmail.com</span>
                 </a>
               </li>
               <li className="grid grid-cols-[20px_1fr] gap-3 text-sm leading-6 text-white/62">
-                <Clock className="mt-0.5 h-4 w-4 text-[#94d9da]" aria-hidden="true" />
+                <Clock className="mt-0.5 h-4 w-4 text-[#cf9fa5]" aria-hidden="true" />
                 9:00 a.m. a 5:00 p.m. Emergencias 24 horas.
               </li>
             </ul>

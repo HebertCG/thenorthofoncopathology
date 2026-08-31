@@ -23,7 +23,7 @@ const pillars = [
     copy: "Ser una red líder, descentralizada y de referencia internacional, que integre inteligencia artificial y estándares globales para un diagnóstico oncológico preciso.",
     tags: ["Red descentralizada", "Estándares globales"],
     icon: Eye,
-    iconClass: "bg-[linear-gradient(135deg,hsl(197_62%_33%),hsl(183_56%_48%))]",
+    iconClass: "bg-[linear-gradient(135deg,hsl(344_62%_30%),hsl(356_66%_50%))]",
   },
 ];
 
@@ -33,7 +33,7 @@ const MissionVisionSection = () => {
       {/* Atmósfera: dos halos suaves, sin peso visual */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="absolute -left-28 top-4 h-72 w-72 rounded-full bg-primary/[0.07] blur-3xl" />
-        <div className="absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-[hsl(183_56%_48%)]/10 blur-3xl" />
+        <div className="absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-[hsl(356_66%_50%)]/10 blur-3xl" />
       </div>
 
       <div className="container-custom relative">
