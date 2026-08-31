@@ -40,7 +40,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="The North of Oncopathology en Facebook"
-                className="grid h-10 w-10 place-items-center rounded-full border border-white/18 text-white/72 transition hover:border-[#eea879] hover:bg-[#eea879] hover:text-[#121e26] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="grid h-10 w-10 place-items-center rounded-full border border-white/18 text-white/72 transition hover:border-[#f88e51] hover:bg-[#f88e51] hover:text-[#121e26] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 <Facebook className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -49,7 +49,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="The North of Oncopathology en Instagram"
-                className="grid h-10 w-10 place-items-center rounded-full border border-white/18 text-white/72 transition hover:border-[#eea879] hover:bg-[#eea879] hover:text-[#121e26] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="grid h-10 w-10 place-items-center rounded-full border border-white/18 text-white/72 transition hover:border-[#f88e51] hover:bg-[#f88e51] hover:text-[#121e26] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 <Instagram className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -57,7 +57,7 @@ const Footer = () => {
           </div>
 
           <nav aria-label="Servicios en el pie de página">
-            <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-[#efac7f]">Servicios</h2>
+            <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-[#f89257]">Servicios</h2>
             <ul className="mt-5 space-y-3">
               {services.map((service) => (
                 <li key={service.label}>
@@ -74,7 +74,7 @@ const Footer = () => {
           </nav>
 
           <nav aria-label="Sedes en el pie de página">
-            <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-[#efac7f]">Sedes</h2>
+            <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-[#f89257]">Sedes</h2>
             <ul className="mt-5 space-y-3">
               {locations.map((location) => (
                 <li key={location}>
@@ -83,7 +83,7 @@ const Footer = () => {
                     onClick={() => selectLocation(location)}
                     className="inline-flex items-center gap-2 text-sm text-white/62 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                   >
-                    <MapPin className="h-3.5 w-3.5 text-[#efac7f]" aria-hidden="true" />
+                    <MapPin className="h-3.5 w-3.5 text-[#f89257]" aria-hidden="true" />
                     {location}
                   </a>
                 </li>
@@ -92,7 +92,7 @@ const Footer = () => {
           </nav>
 
           <div>
-            <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-[#efac7f]">Contacto</h2>
+            <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-[#f89257]">Contacto</h2>
             <ul className="mt-5 space-y-4">
               <li>
                 <a
@@ -101,7 +101,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="grid grid-cols-[20px_1fr] gap-3 text-sm text-white/68 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 >
-                  <Phone className="h-4 w-4 text-[#efac7f]" aria-hidden="true" />
+                  <Phone className="h-4 w-4 text-[#f89257]" aria-hidden="true" />
                   +51 938 683 949
                 </a>
               </li>
@@ -110,12 +110,12 @@ const Footer = () => {
                   href="mailto:thenorthofoncopathology@gmail.com"
                   className="grid min-w-0 grid-cols-[20px_1fr] gap-3 text-sm text-white/68 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 >
-                  <Mail className="h-4 w-4 text-[#efac7f]" aria-hidden="true" />
+                  <Mail className="h-4 w-4 text-[#f89257]" aria-hidden="true" />
                   <span className="break-all">thenorthofoncopathology@gmail.com</span>
                 </a>
               </li>
               <li className="grid grid-cols-[20px_1fr] gap-3 text-sm leading-6 text-white/62">
-                <Clock className="mt-0.5 h-4 w-4 text-[#efac7f]" aria-hidden="true" />
+                <Clock className="mt-0.5 h-4 w-4 text-[#f89257]" aria-hidden="true" />
                 9:00 a.m. a 5:00 p.m. Emergencias 24 horas.
               </li>
             </ul>

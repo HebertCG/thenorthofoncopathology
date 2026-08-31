@@ -182,7 +182,7 @@ const TeamSection = () => {
   );
 
   return (
-    <section id="equipo" className="section-padding overflow-hidden bg-[#f3f3eb] dark:bg-card">
+    <section id="equipo" className="section-padding overflow-hidden bg-[#f8f8f1] dark:bg-card">
       <div className="container-custom">
         <AnimatedSection className="mx-auto flex max-w-2xl flex-col items-center text-center">
           <span className="inline-flex items-center gap-2.5 rounded-full border border-primary/20 bg-primary/[0.06] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-primary">
@@ -223,7 +223,7 @@ const TeamSection = () => {
                         <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#142129] via-[#142129]/78 to-transparent" />
                         <div className="absolute inset-x-0 bottom-0 p-5 text-white sm:p-6">
                           <h3 className="text-xl font-extrabold tracking-tight sm:text-2xl">{member.name}</h3>
-                          <p className="mt-1 text-sm leading-5 text-[#f4c8aa]">{member.role}</p>
+                          <p className="mt-1 text-sm leading-5 text-[#fab085]">{member.role}</p>
                         </div>
                       </div>
                       {member.link && (
@@ -336,7 +336,7 @@ const TeamSection = () => {
                       transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
                       className="relative h-full w-full object-cover object-top mix-blend-multiply [transform-origin:center_left]"
                     />
-                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#f0bf9f] to-transparent" />
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#f9a777] to-transparent" />
                   </div>
 
                   <div className="flex min-w-0 flex-col justify-center p-7 xl:p-9 2xl:p-10">

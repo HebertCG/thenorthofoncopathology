@@ -78,7 +78,7 @@ const HeroSection = () => {
                     className="space-y-4 sm:space-y-6"
                   >
                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white lg:text-foreground leading-tight text-balance">
-                      Diagnóstico <span className="text-[#f1b48b] lg:bg-clip-text lg:text-transparent lg:[background-image:var(--gradient-primary)]">Preciso y Oportuno</span> en Oncopatología
+                      Diagnóstico <span className="text-[#f99b65] lg:bg-clip-text lg:text-transparent lg:[background-image:var(--gradient-primary)]">Preciso y Oportuno</span> en Oncopatología
                     </h1>
                     <p className="text-base sm:text-lg md:text-xl text-white/[.82] lg:text-muted-foreground max-w-xl">
                       Estamos contigo cuando más lo necesitas. Equipo multidisciplinario de expertos comprometidos con la
@@ -234,7 +234,7 @@ const HeroSection = () => {
                   className="space-y-5 sm:space-y-6"
                 >
                   <blockquote className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance">
-                    <span className="text-[#f1b48b] lg:bg-clip-text lg:text-transparent lg:[background-image:var(--gradient-primary)]">Somos el futuro de la oncología.</span>{" "}
+                    <span className="text-[#f99b65] lg:bg-clip-text lg:text-transparent lg:[background-image:var(--gradient-primary)]">Somos el futuro de la oncología.</span>{" "}
                     <span className="text-white lg:text-foreground">Nos encuentras en Piura y en otros 6 departamentos del Perú</span>
                   </blockquote>
 
@@ -303,7 +303,7 @@ const HeroSection = () => {
                     transition={{ duration: 0.6 }}
                     className="space-y-4 sm:space-y-6"
                   >
-                    <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#eea879]">
+                    <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#f88e51]">
                       Equipo de especialistas
                     </p>
                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance">

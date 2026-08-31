@@ -131,7 +131,7 @@ const LocationsSection = () => {
   const selectNext = () => setActiveLocation((current) => (current + 1) % locations.length);
 
   return (
-    <section id="ubicaciones" className="overflow-hidden bg-[#f9f9f3] py-20 sm:py-24 lg:bg-background">
+    <section id="ubicaciones" className="overflow-hidden bg-[#eef0e0] py-20 sm:py-24 lg:bg-background">
       <div className="container-custom">
         <AnimatedSection className="grid items-end gap-7 lg:grid-cols-[.72fr_1.28fr] lg:gap-16">
           <div>
@@ -292,8 +292,8 @@ const LocationsSection = () => {
                 </div>
               </div>
 
-              <div className="relative mt-4 flex min-h-0 flex-1 justify-center">
-                <div className="relative aspect-[1000/1460] h-full max-w-full">
+              <div className="relative mt-4 flex min-h-0 flex-1 items-center justify-center">
+                <div className="relative aspect-[1000/1460] h-full max-h-[500px] max-w-full">
                   <svg
                     data-testid="peru-map"
                     viewBox={`0 0 ${MAP_W} ${MAP_H}`}
@@ -442,7 +442,7 @@ const LocationsSection = () => {
             <div className="flex min-h-[610px] flex-col rounded-[22px] bg-[#17252f] p-6 text-white shadow-[0_34px_76px_-46px_rgba(9,49,57,.7)] sm:p-9 lg:p-10">
               <div className="flex items-center justify-between gap-5 border-b border-white/15 pb-5">
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#efac80]">Sede seleccionada</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#f89358]">Sede seleccionada</p>
                   <p className="mt-2 text-sm text-white/55">Atención local, respaldo nacional</p>
                 </div>
                 <div className="flex gap-2">
@@ -478,7 +478,7 @@ const LocationsSection = () => {
 
                   <div className="mt-6 divide-y divide-white/15 border-y border-white/15">
                     <div className="grid grid-cols-[26px_1fr] gap-4 py-4">
-                      <MapPin className="mt-0.5 h-5 w-5 text-[#efac80]" strokeWidth={1.7} aria-hidden="true" />
+                      <MapPin className="mt-0.5 h-5 w-5 text-[#f89358]" strokeWidth={1.7} aria-hidden="true" />
                       <div>
                         <p className="text-xs font-bold uppercase tracking-[0.12em] text-white/48">Dirección</p>
                         <p className="mt-1.5 font-semibold leading-6 text-white/92">{selected.address}</p>
@@ -490,7 +490,7 @@ const LocationsSection = () => {
                       href={`tel:${selected.phone.replace(/\s/g, "")}`}
                       className="grid grid-cols-[26px_1fr] gap-4 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                     >
-                      <Phone className="mt-0.5 h-5 w-5 text-[#efac80]" strokeWidth={1.7} aria-hidden="true" />
+                      <Phone className="mt-0.5 h-5 w-5 text-[#f89358]" strokeWidth={1.7} aria-hidden="true" />
                       <div>
                         <p className="text-xs font-bold uppercase tracking-[0.12em] text-white/48">Teléfono</p>
                         <p className="mt-1.5 font-semibold text-white/92">{selected.phone}</p>
@@ -498,7 +498,7 @@ const LocationsSection = () => {
                     </a>
 
                     <div className="grid grid-cols-[26px_1fr] gap-4 py-4">
-                      <Clock3 className="mt-0.5 h-5 w-5 text-[#efac80]" strokeWidth={1.7} aria-hidden="true" />
+                      <Clock3 className="mt-0.5 h-5 w-5 text-[#f89358]" strokeWidth={1.7} aria-hidden="true" />
                       <div>
                         <p className="text-xs font-bold uppercase tracking-[0.12em] text-white/48">Horario</p>
                         <p className="mt-1.5 font-semibold leading-6 text-white/92">{selected.hours}</p>
@@ -521,7 +521,7 @@ const LocationsSection = () => {
                     href={`mailto:${selected.email}`}
                     className="mt-5 inline-flex min-w-0 items-center gap-3 text-sm font-semibold text-white/68 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                   >
-                    <Mail className="h-4 w-4 shrink-0 text-[#efac80]" aria-hidden="true" />
+                    <Mail className="h-4 w-4 shrink-0 text-[#f89358]" aria-hidden="true" />
                     <span className="min-w-0 break-all">{selected.email}</span>
                   </a>
 
@@ -543,7 +543,7 @@ const LocationsSection = () => {
                     {index === activeLocation && (
                       <motion.span
                         key={`${activeLocation}-${isPaused}`}
-                        className="block h-full origin-left bg-[#efa97b]"
+                        className="block h-full origin-left bg-[#f89054]"
                         initial={{ scaleX: 0 }}
                         animate={{ scaleX: isPaused || reduceMotion ? 0 : 1 }}
                         transition={{ duration: isPaused || reduceMotion ? 0 : ROTATION_MS / 1000, ease: "linear" }}

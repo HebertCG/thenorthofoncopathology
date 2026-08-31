@@ -3,8 +3,9 @@ import AnimatedSection from "@/components/common/AnimatedSection";
 import { spotlightBackground, trackPointer } from "@/lib/pointerSpotlight";
 
 // Se alternan dos degradados de marca para que la cuadrícula no quede plana.
-const TEAL = "gradient-bg";
-const BLUE = "bg-[linear-gradient(135deg,hsl(72_45%_22%),hsl(17_88%_42%))]";
+const ROJO = "gradient-bg";
+const MARINO = "bg-[linear-gradient(135deg,hsl(204_76%_15%),hsl(1_74%_40%))]";
+const OLIVA = "bg-[linear-gradient(135deg,hsl(72_48%_26%),hsl(19_92%_48%))]";
 
 const features = [
   {
@@ -12,38 +13,38 @@ const features = [
     title: "Precisión Diagnóstica",
     description:
       "Seguimos estándares nacionales e internacionales de control de calidad para garantizar resultados precisos.",
-    iconClass: TEAL,
+    iconClass: ROJO,
   },
   {
     icon: Clock,
     title: "Rapidez en Resultados",
     description:
       "Entregamos resultados en tiempo récord para que puedas tomar decisiones oportunas sobre tu tratamiento.",
-    iconClass: BLUE,
+    iconClass: MARINO,
   },
   {
     icon: Shield,
     title: "Disponibilidad Total",
     description: "Estamos disponibles 24 horas al día, 7 días a la semana, todos los días del año.",
-    iconClass: TEAL,
+    iconClass: OLIVA,
   },
   {
     icon: Users,
     title: "Equipo Especializado",
     description: "Patólogos oncólogos con amplia experiencia y formación en las mejores instituciones.",
-    iconClass: BLUE,
+    iconClass: ROJO,
   },
   {
     icon: Award,
     title: "Enfoque Multidisciplinario",
     description: "Debate de casos clínicos entre expertos para diagnósticos más precisos y completos.",
-    iconClass: TEAL,
+    iconClass: MARINO,
   },
   {
     icon: Building2,
     title: "Cobertura Nacional",
     description: "6 sedes estratégicamente ubicadas en las principales ciudades del Perú.",
-    iconClass: BLUE,
+    iconClass: OLIVA,
   },
 ];
 

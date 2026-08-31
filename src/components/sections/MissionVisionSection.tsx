@@ -23,7 +23,7 @@ const pillars = [
     copy: "Ser una red líder, descentralizada y de referencia internacional, que integre inteligencia artificial y estándares globales para un diagnóstico oncológico preciso.",
     tags: ["Red descentralizada", "Estándares globales"],
     icon: Eye,
-    iconClass: "bg-[linear-gradient(135deg,hsl(72_45%_22%),hsl(17_88%_42%))]",
+    iconClass: "bg-[linear-gradient(135deg,hsl(72_48%_26%),hsl(19_92%_48%))]",
   },
 ];
 

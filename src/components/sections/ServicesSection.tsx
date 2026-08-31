@@ -115,7 +115,7 @@ const ServicesSection = () => {
   };
 
   return (
-    <section id="servicios" className="overflow-hidden bg-[#f7f7f1] py-20 dark:bg-background sm:py-24">
+    <section id="servicios" className="overflow-hidden bg-[#eef0e0] py-20 dark:bg-background sm:py-24">
       <div className="container-custom">
         <AnimatedSection>
           <h2 className="section-title text-balance">Servicios Especializados en Oncopatología</h2>
@@ -201,7 +201,7 @@ const ServicesSection = () => {
                         />
                       </div>
                       <div className="flex flex-1 flex-col p-6">
-                        <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#f0b289]">Red especializada</p>
+                        <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#f89962]">Red especializada</p>
                         <h3 className="mt-3 text-2xl font-extrabold leading-tight tracking-[-0.03em]">Más conocimiento detrás de cada resultado</h3>
                         <p className="mt-3 text-sm leading-6 text-white/72">
                           Casos complejos revisados por un equipo conectado en seis sedes.

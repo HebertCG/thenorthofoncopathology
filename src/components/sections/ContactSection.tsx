@@ -53,7 +53,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contacto" className="section-padding bg-[#f5f5ee] dark:bg-background">
+    <section id="contacto" className="section-padding bg-[#f8f8f1] dark:bg-background">
       <div className="container-custom">
 
         {/* Header */}
