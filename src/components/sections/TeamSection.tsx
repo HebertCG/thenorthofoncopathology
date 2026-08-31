@@ -182,7 +182,7 @@ const TeamSection = () => {
   );
 
   return (
-    <section id="equipo" className="section-padding overflow-hidden bg-[#f2ecec] dark:bg-card">
+    <section id="equipo" className="section-padding overflow-hidden bg-[#f3f1eb] dark:bg-card">
       <div className="container-custom">
         <AnimatedSection className="mx-auto flex max-w-2xl flex-col items-center text-center">
           <span className="inline-flex items-center gap-2.5 rounded-full border border-primary/20 bg-primary/[0.06] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-primary">
@@ -210,7 +210,7 @@ const TeamSection = () => {
                     <motion.article
                       animate={reduceMotion ? {} : { scale: active ? 1 : 0.91, y: active ? 0 : 22, opacity: active ? 1 : 0.58 }}
                       transition={{ type: "spring", stiffness: 210, damping: 25 }}
-                      className={`relative h-full overflow-hidden rounded-[20px] border bg-[#eae0df] shadow-[0_24px_60px_-34px_rgba(9,49,57,.58)] transition-colors ${active ? "border-primary/35" : "border-white/70"}`}
+                      className={`relative h-full overflow-hidden rounded-[20px] border bg-[#ece9dd] shadow-[0_24px_60px_-34px_rgba(9,49,57,.58)] transition-colors ${active ? "border-primary/35" : "border-white/70"}`}
                     >
                       <div className="relative aspect-[3/4] overflow-hidden">
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,.98),rgba(219,235,237,.72)_56%,rgba(9,94,103,.14))]" />
@@ -220,10 +220,10 @@ const TeamSection = () => {
                           loading="lazy"
                           className="relative h-full w-full object-cover object-top mix-blend-multiply"
                         />
-                        <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#291418] via-[#291418]/78 to-transparent" />
+                        <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#181429] via-[#181429]/78 to-transparent" />
                         <div className="absolute inset-x-0 bottom-0 p-5 text-white sm:p-6">
                           <h3 className="text-xl font-extrabold tracking-tight sm:text-2xl">{member.name}</h3>
-                          <p className="mt-1 text-sm leading-5 text-[#dfbfc3]">{member.role}</p>
+                          <p className="mt-1 text-sm leading-5 text-[#ecd9b2]">{member.role}</p>
                         </div>
                       </div>
                       {member.link && (
@@ -299,7 +299,7 @@ const TeamSection = () => {
                         : "border-white/80 bg-background/80 text-foreground hover:border-primary/35 hover:bg-background"
                     }`}
                   >
-                    <span className={`h-11 w-11 overflow-hidden rounded-[12px] ${active ? "bg-white/18" : "bg-[#e7dcda]"}`}>
+                    <span className={`h-11 w-11 overflow-hidden rounded-[12px] ${active ? "bg-white/18" : "bg-[#e9e5d8]"}`}>
                       <img src={member.image} alt="" loading="lazy" className="h-full w-full object-cover object-top mix-blend-multiply" />
                     </span>
                     <span className="min-w-0 text-sm font-extrabold leading-[1.15]">{member.shortName}</span>
@@ -323,7 +323,7 @@ const TeamSection = () => {
                   onDragEnd={handleDragEnd}
                   className="absolute inset-0 grid cursor-grab grid-cols-[minmax(390px,.88fr)_minmax(0,1.12fr)] active:cursor-grabbing"
                 >
-                  <div className="relative isolate overflow-hidden bg-[#e7dcda] [perspective:1400px]">
+                  <div className="relative isolate overflow-hidden bg-[#e9e5d8] [perspective:1400px]">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,.98),rgba(219,235,237,.8)_56%,rgba(9,94,103,.16))]" />
                     <motion.img
                       key={selectedMember.image}
@@ -336,7 +336,7 @@ const TeamSection = () => {
                       transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
                       className="relative h-full w-full object-cover object-top mix-blend-multiply [transform-origin:center_left]"
                     />
-                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#d6b9bd] to-transparent" />
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#e6d2a9] to-transparent" />
                   </div>
 
                   <div className="flex min-w-0 flex-col justify-center p-7 xl:p-9 2xl:p-10">

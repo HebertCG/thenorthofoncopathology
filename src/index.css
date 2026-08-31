@@ -8,65 +8,65 @@
   :root {
     /* Altura de la barra fija del Header (h-[72px]) */
     --header-h: 72px;
-    --background: 12 25% 98%;
-    --foreground: 350 22% 12%;
-    --card: 0 0% 100%;
-    --card-foreground: 350 22% 12%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 350 22% 12%;
-    --primary: 354 82% 40%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 352 34% 94%;
-    --secondary-foreground: 350 25% 16%;
-    --muted: 350 20% 95%;
-    --muted-foreground: 350 9% 40%;
-    --accent: 354 82% 40%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 12 76% 44%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 350 20% 88%;
-    --input: 350 20% 88%;
-    --ring: 354 82% 40%;
+    --background: 48 44% 96%;
+    --foreground: 254 100% 4%;
+    --card: 45 55% 99%;
+    --card-foreground: 254 100% 4%;
+    --popover: 45 55% 99%;
+    --popover-foreground: 254 100% 4%;
+    --primary: 0 98% 37%;
+    --primary-foreground: 45 60% 97%;
+    --secondary: 49 45% 85%;
+    --secondary-foreground: 254 60% 8%;
+    --muted: 48 40% 91%;
+    --muted-foreground: 252 14% 34%;
+    --accent: 37 93% 56%;
+    --accent-foreground: 254 100% 5%;
+    --destructive: 0 84% 45%;
+    --destructive-foreground: 45 60% 97%;
+    --border: 48 28% 84%;
+    --input: 48 28% 84%;
+    --ring: 0 98% 37%;
     --radius: 1.25rem;
-    --medical-green: 354 82% 40%;
-    --medical-green-light: 352 58% 55%;
-    --medical-blue: 344 60% 30%;
-    --medical-blue-dark: 350 30% 16%;
-    --medical-teal: 354 82% 40%;
-    --gradient-primary: linear-gradient(135deg, hsl(354 82% 40%), hsl(344 62% 28%));
-    --gradient-hero: linear-gradient(90deg, hsl(350 26% 9% / .96) 0%, hsl(350 22% 12% / .86) 38%, hsl(350 22% 12% / .18) 70%, transparent 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(12 25% 98%), hsl(350 20% 95% / .62));
-    --shadow-card: 0 20px 56px -34px hsl(350 28% 12% / .34);
-    --shadow-card-hover: 0 28px 68px -34px hsl(350 28% 12% / .42);
-    --shadow-button: 0 12px 30px -12px hsl(354 82% 40% / .42);
-    --sidebar-background: 12 25% 98%;
-    --sidebar-foreground: 350 22% 12%;
-    --sidebar-primary: 354 82% 40%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 350 20% 95%;
-    --sidebar-accent-foreground: 350 22% 12%;
-    --sidebar-border: 350 20% 88%;
-    --sidebar-ring: 354 82% 40%;
+    --medical-green: 0 98% 37%;
+    --medical-green-light: 37 93% 56%;
+    --medical-blue: 254 70% 12%;
+    --medical-blue-dark: 254 100% 4%;
+    --medical-teal: 37 93% 56%;
+    --gradient-primary: linear-gradient(135deg, hsl(0 98% 37%), hsl(37 93% 52%));
+    --gradient-hero: linear-gradient(90deg, hsl(254 100% 4% / .96) 0%, hsl(254 80% 6% / .86) 38%, hsl(254 80% 6% / .18) 70%, transparent 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(48 44% 96%), hsl(49 45% 88% / .62));
+    --shadow-card: 0 20px 56px -34px hsl(254 100% 4% / .30);
+    --shadow-card-hover: 0 28px 68px -34px hsl(254 100% 4% / .40);
+    --shadow-button: 0 12px 30px -12px hsl(0 98% 37% / .45);
+    --sidebar-background: 48 44% 96%;
+    --sidebar-foreground: 254 100% 4%;
+    --sidebar-primary: 0 98% 37%;
+    --sidebar-primary-foreground: 45 60% 97%;
+    --sidebar-accent: 48 40% 91%;
+    --sidebar-accent-foreground: 254 100% 4%;
+    --sidebar-border: 48 28% 84%;
+    --sidebar-ring: 0 98% 37%;
   }
 
   .dark {
-    --background: 350 26% 8%;
-    --foreground: 350 15% 94%;
-    --card: 350 22% 11%;
-    --card-foreground: 350 15% 94%;
-    --popover: 350 22% 11%;
-    --popover-foreground: 350 15% 94%;
-    --primary: 354 70% 55%;
-    --primary-foreground: 350 26% 8%;
-    --secondary: 350 18% 17%;
-    --secondary-foreground: 350 15% 94%;
-    --muted: 350 18% 17%;
-    --muted-foreground: 350 10% 67%;
-    --accent: 354 70% 55%;
-    --accent-foreground: 350 26% 8%;
-    --border: 350 16% 24%;
-    --input: 350 16% 24%;
-    --ring: 354 70% 55%;
+    --background: 254 100% 4%;
+    --foreground: 48 40% 94%;
+    --card: 254 60% 8%;
+    --card-foreground: 48 40% 94%;
+    --popover: 254 60% 8%;
+    --popover-foreground: 48 40% 94%;
+    --primary: 37 93% 56%;
+    --primary-foreground: 254 100% 4%;
+    --secondary: 254 40% 14%;
+    --secondary-foreground: 48 40% 94%;
+    --muted: 254 40% 14%;
+    --muted-foreground: 48 15% 68%;
+    --accent: 37 93% 56%;
+    --accent-foreground: 254 100% 4%;
+    --border: 254 30% 20%;
+    --input: 254 30% 20%;
+    --ring: 37 93% 56%;
   }
 
   * {
@@ -83,7 +83,7 @@
     min-width: 320px;
     overflow-x: clip;
     font-family: 'Inter', system-ui, sans-serif;
-    background-image: radial-gradient(circle at 5% 0%, hsl(354 82% 40% / .05), transparent 28rem);
+    background-image: radial-gradient(circle at 5% 0%, hsl(37 93% 56% / .09), transparent 30rem);
   }
 
   ::selection {
