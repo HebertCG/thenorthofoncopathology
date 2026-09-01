@@ -283,7 +283,7 @@ const HeroSection = () => {
 
           {/* ── SLIDE 5: Equipo médico ── */}
           <div data-testid="hero-slide-equipo" className="flex-none w-full min-h-[calc(90vh-var(--header-h))] flex items-start pt-12 pb-20 sm:items-center sm:pt-0 sm:pb-0 relative overflow-hidden">
-            <img src="/equipo-oncopatologia-hero-v3.webp" width={1672} height={941}
+            <img src="/equipo-oncopatologia-hero-v4.webp" width={1672} height={941}
               loading="eager"
               fetchPriority="high"
               alt="Equipo de médicos especialistas de The North of Oncopathology"

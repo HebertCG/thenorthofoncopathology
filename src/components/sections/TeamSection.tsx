@@ -81,18 +81,6 @@ const teamMembers: TeamMember[] = [
     expertise: ["Anatomía patológica", "Evaluación oncológica", "Revisión de casos"],
     image: "/Jaime-Montes.webp",
   },
-  {
-    name: "Dr. Franco Doimi",
-    shortName: "Franco Doimi",
-    role: "Patología molecular y oncogenómica",
-    credential: "Anátomo patólogo · Patólogo oncólogo",
-    summary:
-      "Especialista en patología quirúrgica, molecular y digital. Su trabajo incorpora secuenciación, biomarcadores y nuevas herramientas para el diagnóstico de precisión en cáncer.",
-    expertise: ["Patología molecular", "Oncogenómica", "Patología digital"],
-    image: "/Franco-Doimi.webp",
-    link: "https://pe.linkedin.com/in/franco-doimi-5991156b/",
-    sourceLabel: "Ver perfil en LinkedIn",
-  },
 ];
 
 // Ritmo del carrusel de especialistas y umbrales del gesto de arrastre.
@@ -283,7 +271,7 @@ const TeamSection = () => {
             onMouseEnter={() => setIsDesktopHovered(true)}
             onMouseLeave={() => setIsDesktopHovered(false)}
           >
-            <div className="mb-5 grid grid-cols-3 gap-3 xl:grid-cols-6">
+            <div className="mb-5 grid grid-cols-3 gap-3 xl:grid-cols-5">
               {teamMembers.map((member, index) => {
                 const active = index === selectedIndex;
                 return (

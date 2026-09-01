@@ -113,4 +113,17 @@ test.describe("responsive mobile experience", () => {
     await expect(page.getByTestId("desktop-locations")).toBeVisible();
     await expect(page.getByTestId("peru-map")).toBeVisible();
   });
+
+  test("shows the updated five-member medical team", async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto("/", { waitUntil: "domcontentloaded" });
+
+    const team = page.locator("#equipo");
+    await team.scrollIntoViewIfNeeded();
+    await expect(team.getByRole("button", { name: /Mostrar información de/i })).toHaveCount(5);
+    await expect(team).not.toContainText(/Franco Doimi/i);
+
+    const teamHero = page.getByTestId("hero-slide-equipo").locator("img").first();
+    await expect(teamHero).toHaveAttribute("src", "/equipo-oncopatologia-hero-v4.webp");
+  });
 });
