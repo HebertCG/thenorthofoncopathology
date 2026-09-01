@@ -213,7 +213,7 @@ const TeamSection = () => {
                       className={`relative h-full overflow-hidden rounded-[20px] border bg-[#ececdd] shadow-[0_24px_60px_-34px_rgba(9,49,57,.58)] transition-colors ${active ? "border-primary/35" : "border-white/70"}`}
                     >
                       <div className="relative aspect-[3/4] overflow-hidden">
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,.98),rgba(219,235,237,.72)_56%,rgba(9,94,103,.14))]" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,.98),rgba(238,240,224,.85)_56%,rgba(132,27,26,.10))]" />
                         <img
                           src={member.image}
                           alt={member.name}
@@ -324,7 +324,7 @@ const TeamSection = () => {
                   className="absolute inset-0 grid cursor-grab grid-cols-[minmax(390px,.88fr)_minmax(0,1.12fr)] active:cursor-grabbing"
                 >
                   <div className="relative isolate overflow-hidden bg-[#e9e9d8] [perspective:1400px]">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,.98),rgba(219,235,237,.8)_56%,rgba(9,94,103,.16))]" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,.98),rgba(238,240,224,.85)_56%,rgba(132,27,26,.10))]" />
                     <motion.img
                       key={selectedMember.image}
                       src={selectedMember.image}
@@ -336,7 +336,6 @@ const TeamSection = () => {
                       transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
                       className="relative h-full w-full object-cover object-top mix-blend-multiply [transform-origin:center_left]"
                     />
-                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#f9a777] to-transparent" />
                   </div>
 
                   <div className="flex min-w-0 flex-col justify-center p-7 xl:p-9 2xl:p-10">

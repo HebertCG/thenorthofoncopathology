@@ -14,7 +14,7 @@
     --card-foreground: 203 70% 11%;
     --popover: 60 40% 99%;
     --popover-foreground: 203 70% 11%;
-    --primary: 1 74% 36%;
+    --primary: 2 84% 41%;
     --primary-foreground: 60 40% 98%;
     --secondary: 72 38% 84%;
     --secondary-foreground: 203 60% 13%;
@@ -26,27 +26,27 @@
     --destructive-foreground: 60 40% 98%;
     --border: 66 20% 84%;
     --input: 66 20% 84%;
-    --ring: 1 74% 36%;
+    --ring: 2 84% 41%;
     --radius: 1.25rem;
-    --medical-green: 1 74% 36%;
+    --medical-green: 2 84% 41%;
     --medical-green-light: 19 92% 45%;
     --medical-blue: 203 76% 13%;
     --medical-blue-dark: 203 70% 9%;
     --medical-teal: 72 45% 22%;
-    --gradient-primary: linear-gradient(135deg, hsl(1 74% 36%), hsl(19 92% 48%));
+    --gradient-primary: linear-gradient(135deg, hsl(2 84% 41%), hsl(20 94% 51%));
     --gradient-hero: linear-gradient(90deg, hsl(203 76% 9% / .96) 0%, hsl(203 70% 12% / .86) 38%, hsl(203 70% 12% / .18) 70%, transparent 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(66 26% 96%), hsl(72 38% 88% / .7));
     --shadow-card: 0 20px 56px -34px hsl(203 76% 11% / .30);
     --shadow-card-hover: 0 28px 68px -34px hsl(203 76% 11% / .40);
-    --shadow-button: 0 12px 30px -12px hsl(1 74% 36% / .5);
+    --shadow-button: 0 12px 30px -12px hsl(2 84% 41% / .55);
     --sidebar-background: 66 26% 96%;
     --sidebar-foreground: 203 70% 11%;
-    --sidebar-primary: 1 74% 36%;
+    --sidebar-primary: 2 84% 41%;
     --sidebar-primary-foreground: 60 40% 98%;
     --sidebar-accent: 66 22% 92%;
     --sidebar-accent-foreground: 203 70% 11%;
     --sidebar-border: 66 20% 84%;
-    --sidebar-ring: 1 74% 36%;
+    --sidebar-ring: 2 84% 41%;
   }
 
   .dark {

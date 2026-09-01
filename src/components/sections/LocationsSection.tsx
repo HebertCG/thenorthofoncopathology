@@ -259,7 +259,7 @@ const LocationsSection = () => {
             }}
           >
             {/* ── Mapa vectorial del Perú ── */}
-            <div className="relative isolate flex min-h-[610px] flex-col">
+            <div className="relative isolate flex min-h-[760px] flex-col">
               <motion.div
                 aria-hidden="true"
                 className="absolute left-1/2 top-1/3 -z-10 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full bg-[#b33b0b]/16 blur-3xl"
@@ -293,7 +293,7 @@ const LocationsSection = () => {
               </div>
 
               <div className="relative mt-4 flex min-h-0 flex-1 items-center justify-center">
-                <div className="relative aspect-[1000/1460] h-full max-h-[500px] max-w-full">
+                <div className="relative aspect-[1000/1460] h-full max-h-[650px] max-w-full">
                   <svg
                     data-testid="peru-map"
                     viewBox={`0 0 ${MAP_W} ${MAP_H}`}
@@ -439,7 +439,7 @@ const LocationsSection = () => {
             </div>
 
             {/* ── Ficha de la sede ── */}
-            <div className="flex min-h-[610px] flex-col rounded-[22px] bg-[#17252f] p-6 text-white shadow-[0_34px_76px_-46px_rgba(9,49,57,.7)] sm:p-9 lg:p-10">
+            <div className="flex min-h-[760px] flex-col rounded-[22px] bg-[#17252f] p-6 text-white shadow-[0_34px_76px_-46px_rgba(9,49,57,.7)] sm:p-9 lg:p-10">
               <div className="flex items-center justify-between gap-5 border-b border-white/15 pb-5">
                 <div>
                   <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#f89358]">Sede seleccionada</p>
