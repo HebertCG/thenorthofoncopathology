@@ -69,6 +69,8 @@ const Header = () => {
             <Link to="/" aria-label="The North of Oncopathology, inicio" className="ml-2 shrink-0 sm:ml-3 lg:ml-5">
               <img
                 src={isCompact ? logoBlanco : logoRojo}
+                width={613}
+                height={220}
                 alt="TNM · The North Medical"
                 className="h-10 w-auto object-contain sm:h-12"
               />
@@ -142,7 +144,7 @@ const Header = () => {
               className="ml-auto flex h-full w-[min(88vw,360px)] flex-col bg-background p-5 shadow-2xl"
             >
               <div className="flex items-center justify-between border-b border-border/70 pb-5">
-                <img src={logoRojo} alt="" className="h-9 w-auto" />
+                <img src={logoRojo} width={613} height={220} alt="" className="h-9 w-auto" />
                 <button
                   type="button"
                   aria-label="Cerrar menú"

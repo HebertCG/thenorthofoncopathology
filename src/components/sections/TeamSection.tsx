@@ -31,7 +31,7 @@ const teamMembers: TeamMember[] = [
     summary:
       "Médico patólogo dedicado al diagnóstico oncológico y a la investigación del cáncer. Su trayectoria integra liderazgo clínico, tejidos tumorales y tecnologías para el análisis de precisión.",
     expertise: ["Patología oncológica", "Investigación en cáncer", "Tejidos tumorales"],
-    image: "/Luis-Manuel-Taxa.png",
+    image: "/Luis-Manuel-Taxa.webp",
     link: "https://www.gob.pe/institucion/prociencia/noticias/507266-inen-presenta-el-primer-microscopio-laser-altamente-especializado-en-el-peru-para-investigar-el-cancer",
     sourceLabel: "Ver referencia profesional",
   },
@@ -43,7 +43,7 @@ const teamMembers: TeamMember[] = [
     summary:
       "Especialista con amplia experiencia en patología oncológica, particularmente en mama, cabeza y cuello. Combina práctica diagnóstica, consultoría especializada y formación médica.",
     expertise: ["Patología mamaria", "Cabeza y cuello", "Docencia médica"],
-    image: "/Henry-Guerra.png",
+    image: "/Henry-Guerra.webp",
     link: "https://patologosespecializados.com.pe/?team=dr-henry-guerra",
     sourceLabel: "Ver perfil profesional",
   },
@@ -55,7 +55,7 @@ const teamMembers: TeamMember[] = [
     summary:
       "Especialista en neuropatología con actividad clínica y científica vinculada a tumores del sistema nervioso central, biomarcadores y diagnóstico anatomopatológico especializado.",
     expertise: ["Neuropatología", "Tumores cerebrales", "Investigación biomédica"],
-    image: "/Sandro-Casavilca.png",
+    image: "/Sandro-Casavilca.webp",
     link: "https://pe.linkedin.com/in/sandro-casavilca-zambrano-174023a5",
     sourceLabel: "Ver perfil en LinkedIn",
   },
@@ -67,7 +67,7 @@ const teamMembers: TeamMember[] = [
     summary:
       "Patólogo especializado en enfermedades hematológicas y oncología molecular. Su formación combina hematopatología, bioquímica y diagnóstico avanzado de neoplasias.",
     expertise: ["Hematopatología", "Oncología molecular", "Patología diagnóstica"],
-    image: "/Carlos-Barrionuevo.png",
+    image: "/Carlos-Barrionuevo.webp",
     link: "https://pe.linkedin.com/in/carlos-barrionuevo-cornejo-4350b035",
     sourceLabel: "Ver perfil en LinkedIn",
   },
@@ -79,7 +79,7 @@ const teamMembers: TeamMember[] = [
     summary:
       "Participa en la evaluación anatomopatológica de casos oncológicos y en la revisión multidisciplinaria que permite integrar los hallazgos microscópicos con la información clínica.",
     expertise: ["Anatomía patológica", "Evaluación oncológica", "Revisión de casos"],
-    image: "/Jaime-Montes.png",
+    image: "/Jaime-Montes.webp",
   },
   {
     name: "Dr. Franco Doimi",
@@ -89,7 +89,7 @@ const teamMembers: TeamMember[] = [
     summary:
       "Especialista en patología quirúrgica, molecular y digital. Su trabajo incorpora secuenciación, biomarcadores y nuevas herramientas para el diagnóstico de precisión en cáncer.",
     expertise: ["Patología molecular", "Oncogenómica", "Patología digital"],
-    image: "/Franco-Doimi.png",
+    image: "/Franco-Doimi.webp",
     link: "https://pe.linkedin.com/in/franco-doimi-5991156b/",
     sourceLabel: "Ver perfil en LinkedIn",
   },

@@ -29,7 +29,7 @@ const Footer = () => {
         <div className="grid gap-10 border-b border-white/12 pb-12 md:grid-cols-2 lg:grid-cols-[1.25fr_1fr_.78fr_1.15fr] lg:gap-12">
           <div>
             <a href="#inicio" aria-label="Volver al inicio" className="inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
-              <img src={logo} alt="TNM · The North Medical" className="h-14 w-auto object-contain" />
+              <img src={logo} width={613} height={220} alt="TNM · The North Medical" className="h-14 w-auto object-contain" />
             </a>
             <p className="mt-5 max-w-[34ch] text-sm leading-6 text-white/62">
               Red multicéntrica especializada en estudio anatomopatológico oncológico y no oncológico, con atención oportuna en seis ciudades del Perú.

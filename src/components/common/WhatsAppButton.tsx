@@ -49,7 +49,7 @@ const WhatsAppButton = () => {
         {/* Pulse Ring - Simplified for better performance */}
         <span className="absolute -inset-1 rounded-full bg-[#25D366]/40 animate-ping" />
 
-        <img src="/iconwhatsapp.png" alt="WhatsApp" className="w-8 h-8 object-contain" />
+        <img src="/iconwhatsapp.png" width={327} height={328} alt="WhatsApp" className="w-8 h-8 object-contain" />
       </motion.a>
     </div>
   );

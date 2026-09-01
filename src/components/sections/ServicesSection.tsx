@@ -11,37 +11,37 @@ const services = [
     category: "diagnostico" as const,
     title: "Análisis anatomopatológico integral",
     description: "Estudio microscópico de tejidos oncológicos y no oncológicos con alta precisión diagnóstica.",
-    image: "/diagnostico.jpg",
+    image: "/diagnostico.webp",
   },
   {
     category: "diagnostico" as const,
     title: "Biopsias",
     description: "Biopsia core, punch, incisional y citología de Papanicolaou con procesamiento oportuno.",
-    image: "/proposito-laboratorio.jpg",
+    image: "/proposito-laboratorio.webp",
   },
   {
     category: "diagnostico" as const,
     title: "Piezas quirúrgicas",
     description: "Evaluación de márgenes, estadificación TNM y análisis completo de especímenes postoperatorios.",
-    image: "/futuro-de-oncologia.jpg",
+    image: "/futuro-de-oncologia.webp",
   },
   {
     category: "avanzados" as const,
     title: "Inmunohistoquímica",
     description: "Más de 50 marcadores para caracterizar tumores y orientar decisiones terapéuticas.",
-    image: "/futuro-oncologico-esta-aqui.jpg",
+    image: "/futuro-oncologico-esta-aqui.webp",
   },
   {
     category: "avanzados" as const,
     title: "Segunda opinión patológica",
     description: "Revisión experta de tacos, láminas e informes provenientes de otras instituciones.",
-    image: "/diagnostico.jpg",
+    image: "/diagnostico.webp",
   },
   {
     category: "avanzados" as const,
     title: "Consulta multidisciplinaria",
     description: "Discusión de casos complejos entre especialistas para alcanzar una decisión diagnóstica consensuada.",
-    image: "/proposito-laboratorio.jpg",
+    image: "/proposito-laboratorio.webp",
   },
 ];
 
@@ -193,8 +193,7 @@ const ServicesSection = () => {
                   <div className="min-w-0 shrink-0 grow-0 basis-[86%] pl-4 sm:basis-1/2 lg:block lg:basis-auto lg:pl-0">
                     <aside className="flex h-full min-h-[475px] flex-col overflow-hidden rounded-[18px] bg-[#223644] text-white shadow-[0_24px_56px_-38px_rgba(9,49,57,.8)]">
                       <div className="h-52 overflow-hidden">
-                        <img
-                          src="/futuro-oncologico-esta-aqui.jpg"
+                        <img src="/futuro-oncologico-esta-aqui.webp" width={1373} height={916}
                           alt="Tecnología aplicada al diagnóstico oncológico"
                           loading="lazy"
                           className="h-full w-full object-cover"

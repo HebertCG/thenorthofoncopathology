@@ -60,8 +60,7 @@ const HeroSection = () => {
             <div className="absolute bottom-20 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
 
             <div className="absolute inset-0 h-full lg:left-auto lg:right-0 lg:w-1/2">
-              <img
-                src="/diagnostico.jpg"
+              <img src="/diagnostico.webp" width={1373} height={916} loading="lazy"
                 alt="Diagnóstico Oncológico"
                 className="h-full w-full object-cover object-[62%_center] lg:object-center lg:[mask-image:linear-gradient(to_right,transparent_0%,black_35%)]"
               />
@@ -117,8 +116,7 @@ const HeroSection = () => {
 
           {/* ── SLIDE 2: Original ── */}
           <div data-testid="hero-slide-tiempo" className="flex-none w-full min-h-[calc(90vh-var(--header-h))] flex items-start pt-12 pb-20 sm:items-center sm:pt-0 sm:pb-0 relative overflow-hidden">
-            <img
-              src="/proposito-laboratorio.jpg"
+            <img src="/proposito-laboratorio.webp" width={1536} height={1024} loading="lazy"
               alt="Laboratorio de diagnóstico oncológico"
               className="absolute inset-0 h-full w-full object-cover object-[62%_center]"
             />
@@ -140,9 +138,9 @@ const HeroSection = () => {
                       <span className="text-xs sm:text-sm font-medium text-white">Tiempo Crucial</span>
                     </div>
 
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight text-balance">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight text-balance">
                       El Tiempo en el Cáncer <span className="text-white/90">es Determinante</span>
-                    </h1>
+                    </h2>
                     <p className="text-base sm:text-lg text-white/80 max-w-xl">
                       Cada minuto cuenta cuando se trata de un diagnóstico oncológico. Por eso, en The North of
                       Oncopathology nos comprometemos a entregar resultados en tiempo récord sin comprometer la calidad ni
@@ -217,8 +215,7 @@ const HeroSection = () => {
             <div className="absolute bottom-20 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
 
             <div className="absolute inset-0 h-full lg:left-auto lg:right-0 lg:w-1/2">
-              <img
-                src="/futuro-de-oncologia.jpg"
+              <img src="/futuro-de-oncologia.webp" width={1373} height={916} loading="lazy"
                 alt="Futuro de la Oncología"
                 className="h-full w-full object-cover object-[60%_center] lg:object-center lg:[mask-image:linear-gradient(to_right,transparent_0%,black_35%)]"
               />
@@ -264,14 +261,13 @@ const HeroSection = () => {
 
           {/* ── SLIDE 4: Original ── */}
           <div className="flex-none w-full min-h-[calc(90vh-var(--header-h))] flex items-end relative">
-            <img
-              src="/futuro-oncologico-esta-aqui.jpg"
+            <img src="/futuro-oncologico-esta-aqui.webp" width={1373} height={916} loading="lazy"
               alt="El futuro oncológico está aquí"
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
-            <motion.h1
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
@@ -282,17 +278,18 @@ const HeroSection = () => {
               oncológico
               <br />
               está aquí
-            </motion.h1>
+            </motion.h2>
           </div>
 
           {/* ── SLIDE 5: Equipo médico ── */}
           <div data-testid="hero-slide-equipo" className="flex-none w-full min-h-[calc(90vh-var(--header-h))] flex items-start pt-12 pb-20 sm:items-center sm:pt-0 sm:pb-0 relative overflow-hidden">
-            <img
-              src="/equipo-oncopatologia-hero-v3.jpg"
+            <img src="/equipo-oncopatologia-hero-v3.webp" width={1672} height={941}
+              loading="eager"
+              fetchPriority="high"
               alt="Equipo de médicos especialistas de The North of Oncopathology"
               className="absolute inset-0 w-full h-full object-cover object-[72%_center] sm:object-[68%_center] lg:object-center"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,34,39,.97)_0%,rgba(8,34,39,.9)_35%,rgba(8,34,39,.48)_62%,rgba(8,34,39,.08)_100%)] max-lg:bg-[linear-gradient(180deg,rgba(8,34,39,.2)_0%,rgba(8,34,39,.55)_45%,rgba(8,34,39,.96)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,39,59,.97)_0%,rgba(8,39,59,.9)_35%,rgba(8,39,59,.48)_62%,rgba(8,39,59,.08)_100%)] max-lg:bg-[linear-gradient(180deg,rgba(8,39,59,.2)_0%,rgba(8,39,59,.55)_45%,rgba(8,39,59,.96)_100%)]" />
 
             <div className="container-custom relative z-10 w-full">
               <div className="lg:w-1/2 pr-4 sm:pr-8">
@@ -306,9 +303,9 @@ const HeroSection = () => {
                     <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#f88e51]">
                       Equipo de especialistas
                     </p>
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance">
                       Profesionales altamente capacitados en oncopatología
-                    </h1>
+                    </h2>
                     <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-xl">
                       Patólogos oncólogos con formación en las principales instituciones del país y años de experiencia
                       en el diagnóstico del cáncer. Los casos complejos se revisan en conjunto, para que cada informe
