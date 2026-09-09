@@ -1,0 +1,4 @@
+# Archivos de configuración de Workers: wrangler los interpreta, pero no deben
+# quedar accesibles como recursos públicos del sitio.
+_headers
+_redirects

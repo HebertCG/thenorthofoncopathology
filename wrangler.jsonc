@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "thenorthofoncopathology",
+  "compatibility_date": "2026-09-09",
+
+  // Sin "main": el Worker no ejecuta código, solo sirve archivos. Las peticiones
+  // no salen de la ruta rápida de assets de Cloudflare, así que no hay arranque
+  // en frío ni CPU facturable.
+  "assets": {
+    "directory": "./dist/",
+
+    // La app usa BrowserRouter: cualquier ruta que no exista como archivo debe
+    // devolver index.html con estado 200 para que React Router la resuelva. Sin
+    // esto, entrar directo a una URL profunda daría el 404 de Cloudflare.
+    "not_found_handling": "single-page-application"
+  },
+
+  "observability": {
+    "enabled": true
+  }
+}

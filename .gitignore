@@ -29,3 +29,6 @@ test-results
 .env
 .env.*
 !.env.example
+
+# Cloudflare Workers
+.wrangler/

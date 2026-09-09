@@ -1,0 +1,41 @@
+# Cabeceras para Cloudflare Workers (assets estáticos).
+# Vite copia este archivo a dist/ en el build; wrangler lo interpreta y no lo
+# publica como un asset más.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+  # CSP en modo solo-reporte: no bloquea nada, únicamente registra en la consola
+  # del navegador lo que incumpliría. Cuando la consola salga limpia en
+  # producción, renombrar esta cabecera a Content-Security-Policy para que pase
+  # a bloquear de verdad.
+  #
+  # Orígenes contemplados: Google Fonts (importadas desde index.css), el iframe
+  # de Google Maps de la sección de sedes, y 'unsafe-inline' en style-src porque
+  # framer-motion escribe estilos en línea al animar.
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.google.com https://maps.google.com; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'none'
+
+# Los nombres de archivo que emite Vite llevan hash, así que su contenido nunca
+# cambia bajo la misma URL: se pueden cachear de forma indefinida.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Imágenes y fuentes propias: caché larga, pero revalidable, porque su nombre no
+# lleva hash y pueden reemplazarse (como ya pasó con el hero v3 -> v4).
+/*.webp
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+/*.jpg
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+/*.png
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+# El HTML nunca se cachea en el navegador: es lo que apunta a los assets con
+# hash, y si se quedara viejo el usuario seguiría viendo la versión anterior.
+/
+  Cache-Control: public, max-age=0, must-revalidate
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
