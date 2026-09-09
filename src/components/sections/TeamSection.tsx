@@ -9,6 +9,7 @@ import {
   Microscope,
 } from "lucide-react";
 import AnimatedSection from "@/components/common/AnimatedSection";
+import { cn } from "@/lib/utils";
 
 interface TeamMember {
   name: string;
@@ -18,9 +19,24 @@ interface TeamMember {
   summary: string;
   expertise: string[];
   image: string;
+  /** Los retratos se recortan a la caja; un logo debe caber entero. */
+  imageFit?: "cover" | "contain";
   link?: string;
   sourceLabel?: string;
 }
+
+// Clases de imagen segun el encuadre. Un logo sobre fondo blanco no lleva
+// mix-blend-multiply ni anclaje superior: se centra y se deja respirar.
+// Se compone con cn() para que twMerge resuelva los conflictos: la miniatura
+// pasa p-1 y debe ganarle al p-6 de la ficha grande, no acumularse con el.
+const claseImagen = (miembro: TeamMember, extra = "") =>
+  cn(
+    "h-full w-full",
+    miembro.imageFit === "contain"
+      ? "object-contain p-6"
+      : "object-cover object-top mix-blend-multiply",
+    extra,
+  );
 
 const teamMembers: TeamMember[] = [
   {
@@ -80,6 +96,19 @@ const teamMembers: TeamMember[] = [
       "Participa en la evaluación anatomopatológica de casos oncológicos y en la revisión multidisciplinaria que permite integrar los hallazgos microscópicos con la información clínica.",
     expertise: ["Anatomía patológica", "Evaluación oncológica", "Revisión de casos"],
     image: "/Jaime-Montes.webp",
+  },
+  {
+    name: "Dr. Franco Doimi",
+    shortName: "Franco Doimi",
+    role: "Patología molecular y oncogenómica",
+    credential: "Anátomo patólogo · Patólogo oncólogo",
+    summary:
+      "Especialista en patología quirúrgica, molecular y digital. Su trabajo incorpora secuenciación, biomarcadores y nuevas herramientas para el diagnóstico de precisión en cáncer.",
+    expertise: ["Patología molecular", "Oncogenómica", "Patología digital"],
+    image: "/franco-doimi-logo.webp",
+    imageFit: "contain",
+    link: "https://pe.linkedin.com/in/franco-doimi-5991156b/",
+    sourceLabel: "Ver perfil en LinkedIn",
   },
 ];
 
@@ -206,7 +235,7 @@ const TeamSection = () => {
                           src={member.image}
                           alt={member.name}
                           loading="lazy"
-                          className="relative h-full w-full object-cover object-top mix-blend-multiply"
+                          className={claseImagen(member, "relative")}
                         />
                         <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#142129] via-[#142129]/78 to-transparent" />
                         <div className="absolute inset-x-0 bottom-0 p-5 text-white sm:p-6">
@@ -271,7 +300,7 @@ const TeamSection = () => {
             onMouseEnter={() => setIsDesktopHovered(true)}
             onMouseLeave={() => setIsDesktopHovered(false)}
           >
-            <div className="mb-5 grid grid-cols-3 gap-3 xl:grid-cols-5">
+            <div className="mb-5 grid grid-cols-3 gap-3 xl:grid-cols-6">
               {teamMembers.map((member, index) => {
                 const active = index === selectedIndex;
                 return (
@@ -288,7 +317,7 @@ const TeamSection = () => {
                     }`}
                   >
                     <span className={`h-11 w-11 overflow-hidden rounded-[12px] ${active ? "bg-white/18" : "bg-[#e9e9d8]"}`}>
-                      <img src={member.image} alt="" loading="lazy" className="h-full w-full object-cover object-top mix-blend-multiply" />
+                      <img src={member.image} alt="" loading="lazy" className={claseImagen(member, "p-1")} />
                     </span>
                     <span className="min-w-0 text-sm font-extrabold leading-[1.15]">{member.shortName}</span>
                   </button>
@@ -322,7 +351,7 @@ const TeamSection = () => {
                       initial={reduceMotion ? false : { opacity: 0, x: -38, rotateY: 8, scale: 1.025 }}
                       animate={{ opacity: 1, x: 0, rotateY: 0, scale: 1 }}
                       transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
-                      className="relative h-full w-full object-cover object-top mix-blend-multiply [transform-origin:center_left]"
+                      className={claseImagen(selectedMember, "relative [transform-origin:center_left]")}
                     />
                   </div>
 
