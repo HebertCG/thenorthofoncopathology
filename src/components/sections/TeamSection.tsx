@@ -29,6 +29,8 @@ interface TeamMember {
 // mix-blend-multiply ni anclaje superior: se centra y se deja respirar.
 // Se compone con cn() para que twMerge resuelva los conflictos: la miniatura
 // pasa p-1 y debe ganarle al p-6 de la ficha grande, no acumularse con el.
+const esLogo = (miembro: TeamMember) => miembro.imageFit === "contain";
+
 const claseImagen = (miembro: TeamMember, extra = "") =>
   cn(
     "h-full w-full",
@@ -229,8 +231,10 @@ const TeamSection = () => {
                       transition={{ type: "spring", stiffness: 210, damping: 25 }}
                       className={`relative h-full overflow-hidden rounded-[20px] border bg-[#ececdd] shadow-[0_24px_60px_-34px_rgba(9,49,57,.58)] transition-colors ${active ? "border-primary/35" : "border-white/70"}`}
                     >
-                      <div className="relative aspect-[3/4] overflow-hidden">
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,.98),rgba(238,240,224,.85)_56%,rgba(132,27,26,.10))]" />
+                      <div className={cn("relative aspect-[3/4] overflow-hidden", esLogo(member) && "bg-white")}>
+                        {!esLogo(member) && (
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,.98),rgba(238,240,224,.85)_56%,rgba(132,27,26,.10))]" />
+                        )}
                         <img
                           src={member.image}
                           alt={member.name}
@@ -316,7 +320,7 @@ const TeamSection = () => {
                         : "border-white/80 bg-background/80 text-foreground hover:border-primary/35 hover:bg-background"
                     }`}
                   >
-                    <span className={`h-11 w-11 overflow-hidden rounded-[12px] ${active ? "bg-white/18" : "bg-[#e9e9d8]"}`}>
+                    <span className={cn("h-11 w-11 overflow-hidden rounded-[12px]", esLogo(member) ? "bg-white" : active ? "bg-white/18" : "bg-[#e9e9d8]")}>
                       <img src={member.image} alt="" loading="lazy" className={claseImagen(member, "p-1")} />
                     </span>
                     <span className="min-w-0 text-sm font-extrabold leading-[1.15]">{member.shortName}</span>
@@ -340,8 +344,10 @@ const TeamSection = () => {
                   onDragEnd={handleDragEnd}
                   className="absolute inset-0 grid cursor-grab grid-cols-[minmax(390px,.88fr)_minmax(0,1.12fr)] active:cursor-grabbing"
                 >
-                  <div className="relative isolate overflow-hidden bg-[#e9e9d8] [perspective:1400px]">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,.98),rgba(238,240,224,.85)_56%,rgba(132,27,26,.10))]" />
+                  <div className={cn("relative isolate overflow-hidden [perspective:1400px]", esLogo(selectedMember) ? "bg-white" : "bg-[#e9e9d8]")}>
+                    {!esLogo(selectedMember) && (
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,.98),rgba(238,240,224,.85)_56%,rgba(132,27,26,.10))]" />
+                    )}
                     <motion.img
                       key={selectedMember.image}
                       src={selectedMember.image}
