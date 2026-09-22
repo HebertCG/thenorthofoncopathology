@@ -285,8 +285,11 @@ const HeroSection = () => {
           <div data-testid="hero-slide-equipo" className="flex-none w-full min-h-[calc(90vh-var(--header-h))] flex items-start pt-12 pb-20 sm:items-center sm:pt-0 sm:pb-0 relative overflow-hidden">
             <img src="/equipo-oncopatologia-hero-v4.webp" width={1672} height={941}
               loading="eager"
-              fetchPriority="high"
-              alt="Equipo de médicos especialistas de The North of Oncopathology"
+              // React 18 no reconoce la prop fetchPriority (llega en React 19) y avisa en
+              // consola; en minúscula pasa al DOM tal cual. Los tipos solo conocen la
+              // forma camelCase, de ahí el spread. Al subir a React 19, usar fetchPriority.
+              {...{ fetchpriority: "high" }}
+              alt="Equipo de patólogos oncólogos de TNM The North Medical"
               className="absolute inset-0 w-full h-full object-cover object-[72%_center] sm:object-[68%_center] lg:object-center"
             />
             <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,39,59,.97)_0%,rgba(8,39,59,.9)_35%,rgba(8,39,59,.48)_62%,rgba(8,39,59,.08)_100%)] max-lg:bg-[linear-gradient(180deg,rgba(8,39,59,.2)_0%,rgba(8,39,59,.55)_45%,rgba(8,39,59,.96)_100%)]" />

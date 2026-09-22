@@ -1,16 +1,5 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
+# Todo el sitio es público e indexable.
 User-agent: *
 Allow: /
 
-Sitemap: https://www.northoncopathology.pe/sitemap.xml
+Sitemap: https://tnm.pe/sitemap.xml

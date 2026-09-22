@@ -1,14 +1,20 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-PE">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The North of Oncopathology | Diagnóstico Preciso 24/7</title>
-    <meta name="description" content="Empresa descentralizada multicéntrica especializada en análisis anatomopatológico oncológico. 6 sedes en Perú, disponibilidad 24/7, equipo multidisciplinario." />
-    <meta name="keywords" content="oncopatología, anatomía patológica, biopsia, cáncer, oncología, diagnóstico oncológico, Perú, Lima, Piura, Chiclayo" />
-    <meta name="author" content="The North of Oncopathology" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://www.northoncopathology.pe/" />
+    <title>TNM The North Medical | Patología oncológica en Perú</title>
+    <meta name="description" content="Diagnóstico anatomopatológico oncológico preciso: biopsias, inmunohistoquímica y segunda opinión. Sedes en Lima, Piura, Chiclayo, Cajamarca, Ica y Ayacucho." />
+    <meta name="author" content="TNM The North Medical" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <link rel="canonical" href="https://tnm.pe/" />
+
+    <!-- Fuente: se pide desde el HTML y no con @import dentro del CSS. El @import
+         obligaba a una descarga en cadena (HTML -> CSS -> CSS de Google -> fuente)
+         que retrasaba el primer pintado. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
 
     <!-- Icono de pestaña: el emblema del logo sobre fondo transparente,
          para que no se vea como un cuadro sólido en la barra del navegador -->
@@ -16,278 +22,313 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#b21510" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph: miniatura al compartir en WhatsApp, Facebook y LinkedIn -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.northoncopathology.pe/" />
-    <meta property="og:title" content="The North of Oncopathology | Diagnóstico Preciso 24/7" />
-    <meta property="og:description" content="Empresa descentralizada multicéntrica especializada en análisis anatomopatológico oncológico. 6 sedes en Perú, disponibilidad 24/7." />
-    <meta property="og:image" content="https://www.northoncopathology.pe/og-image.jpg" />
+    <meta property="og:url" content="https://tnm.pe/" />
+    <meta property="og:site_name" content="TNM The North Medical" />
+    <meta property="og:title" content="TNM The North Medical | Patología oncológica en Perú" />
+    <meta property="og:description" content="Patólogos oncólogos con seis sedes en Perú. Biopsias, inmunohistoquímica y segunda opinión con resultados en 24 a 48 horas." />
+    <meta property="og:image" content="https://tnm.pe/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Equipo de patólogos oncólogos de The North Medical" />
+    <meta property="og:image:alt" content="Equipo de patólogos oncólogos de TNM The North Medical" />
     <meta property="og:locale" content="es_PE" />
-    <meta property="og:site_name" content="The North of Oncopathology" />
 
-    <!-- Twitter -->
+    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://www.northoncopathology.pe/" />
-    <meta name="twitter:title" content="The North of Oncopathology | Diagnóstico Preciso 24/7" />
-    <meta name="twitter:description" content="Empresa descentralizada multicéntrica especializada en análisis anatomopatológico oncológico. 6 sedes en Perú, disponibilidad 24/7." />
-    <meta name="twitter:image" content="https://www.northoncopathology.pe/og-image.jpg" />
+    <meta name="twitter:title" content="TNM The North Medical | Patología oncológica en Perú" />
+    <meta name="twitter:description" content="Patólogos oncólogos con seis sedes en Perú. Biopsias, inmunohistoquímica y segunda opinión con resultados en 24 a 48 horas." />
+    <meta name="twitter:image" content="https://tnm.pe/og-image.jpg" />
+    <meta name="twitter:image:alt" content="Equipo de patólogos oncólogos de TNM The North Medical" />
 
     <!-- Datos estructurados: identifican la organización y sus seis sedes
          para las búsquedas locales de Google -->
     <script type="application/ld+json">
-{
-      "@context": "https://schema.org",
-      "@graph": [
-            {
-                  "@type": "MedicalOrganization",
-                  "@id": "https://www.northoncopathology.pe/#organizacion",
-                  "name": "The North of Oncopathology",
-                  "url": "https://www.northoncopathology.pe",
-                  "logo": "https://www.northoncopathology.pe/icon-512.png",
-                  "image": "https://www.northoncopathology.pe/og-image.jpg",
-                  "email": "thenorthofoncopathology@gmail.com",
-                  "description": "Red multicéntrica especializada en análisis anatomopatológico oncológico y no oncológico, con seis sedes en Perú y disponibilidad 24/7.",
-                  "medicalSpecialty": "Pathology",
-                  "areaServed": {
-                        "@type": "Country",
-                        "name": "Perú"
-                  }
-            },
-            {
-                  "@type": "MedicalClinic",
-                  "@id": "https://www.northoncopathology.pe/#sede-piura",
-                  "name": "The North of Oncopathology · Piura",
-                  "parentOrganization": {
-                        "@id": "https://www.northoncopathology.pe/#organizacion"
-                  },
-                  "url": "https://www.northoncopathology.pe/#ubicaciones",
-                  "image": "https://www.northoncopathology.pe/og-image.jpg",
-                  "telephone": "+51938683949",
-                  "email": "thenorthofoncopathology@gmail.com",
-                  "medicalSpecialty": "Pathology",
-                  "address": {
-                        "@type": "PostalAddress",
-                        "streetAddress": "Av. Guillermo Irazola D1 Lote 26, Urb. Miraflores",
-                        "addressLocality": "Piura",
-                        "addressCountry": "PE"
-                  },
-                  "geo": {
-                        "@type": "GeoCoordinates",
-                        "latitude": -5.1945,
-                        "longitude": -80.6328
-                  },
-                  "openingHoursSpecification": [
-                        {
-                              "@type": "OpeningHoursSpecification",
-                              "dayOfWeek": [
-                                    "Monday",
-                                    "Tuesday",
-                                    "Wednesday",
-                                    "Thursday",
-                                    "Friday"
-                              ],
-                              "opens": "09:00",
-                              "closes": "17:00"
-                        }
-                  ]
-            },
-            {
-                  "@type": "MedicalClinic",
-                  "@id": "https://www.northoncopathology.pe/#sede-chiclayo",
-                  "name": "The North of Oncopathology · Chiclayo",
-                  "parentOrganization": {
-                        "@id": "https://www.northoncopathology.pe/#organizacion"
-                  },
-                  "url": "https://www.northoncopathology.pe/#ubicaciones",
-                  "image": "https://www.northoncopathology.pe/og-image.jpg",
-                  "telephone": "+51987603521",
-                  "email": "thenorthofoncopathology@gmail.com",
-                  "medicalSpecialty": "Pathology",
-                  "address": {
-                        "@type": "PostalAddress",
-                        "streetAddress": "Av. Salaverry 147",
-                        "addressLocality": "Chiclayo",
-                        "addressCountry": "PE"
-                  },
-                  "geo": {
-                        "@type": "GeoCoordinates",
-                        "latitude": -6.7714,
-                        "longitude": -79.8409
-                  },
-                  "openingHoursSpecification": [
-                        {
-                              "@type": "OpeningHoursSpecification",
-                              "dayOfWeek": [
-                                    "Monday",
-                                    "Tuesday",
-                                    "Wednesday",
-                                    "Thursday",
-                                    "Friday"
-                              ],
-                              "opens": "09:00",
-                              "closes": "17:00"
-                        }
-                  ]
-            },
-            {
-                  "@type": "MedicalClinic",
-                  "@id": "https://www.northoncopathology.pe/#sede-cajamarca",
-                  "name": "The North of Oncopathology · Cajamarca",
-                  "parentOrganization": {
-                        "@id": "https://www.northoncopathology.pe/#organizacion"
-                  },
-                  "url": "https://www.northoncopathology.pe/#ubicaciones",
-                  "image": "https://www.northoncopathology.pe/og-image.jpg",
-                  "telephone": "+51935326109",
-                  "email": "thenorthofoncopathology@gmail.com",
-                  "medicalSpecialty": "Pathology",
-                  "address": {
-                        "@type": "PostalAddress",
-                        "streetAddress": "Amalia Puga 866",
-                        "addressLocality": "Cajamarca",
-                        "addressCountry": "PE"
-                  },
-                  "geo": {
-                        "@type": "GeoCoordinates",
-                        "latitude": -7.1638,
-                        "longitude": -78.5127
-                  },
-                  "openingHoursSpecification": [
-                        {
-                              "@type": "OpeningHoursSpecification",
-                              "dayOfWeek": [
-                                    "Monday",
-                                    "Tuesday",
-                                    "Wednesday",
-                                    "Thursday",
-                                    "Friday"
-                              ],
-                              "opens": "09:00",
-                              "closes": "17:00"
-                        }
-                  ]
-            },
-            {
-                  "@type": "MedicalClinic",
-                  "@id": "https://www.northoncopathology.pe/#sede-lima",
-                  "name": "The North of Oncopathology · Lima",
-                  "parentOrganization": {
-                        "@id": "https://www.northoncopathology.pe/#organizacion"
-                  },
-                  "url": "https://www.northoncopathology.pe/#ubicaciones",
-                  "image": "https://www.northoncopathology.pe/og-image.jpg",
-                  "telephone": "+51937164019",
-                  "email": "thenorthofoncopathology@gmail.com",
-                  "medicalSpecialty": "Pathology",
-                  "address": {
-                        "@type": "PostalAddress",
-                        "streetAddress": "Jirón Gravilla Billón 671, Torre J, 1202",
-                        "addressLocality": "Lima",
-                        "addressCountry": "PE"
-                  },
-                  "geo": {
-                        "@type": "GeoCoordinates",
-                        "latitude": -12.0464,
-                        "longitude": -77.0428
-                  },
-                  "openingHoursSpecification": [
-                        {
-                              "@type": "OpeningHoursSpecification",
-                              "dayOfWeek": [
-                                    "Monday",
-                                    "Tuesday",
-                                    "Wednesday",
-                                    "Thursday",
-                                    "Friday"
-                              ],
-                              "opens": "09:00",
-                              "closes": "17:00"
-                        }
-                  ]
-            },
-            {
-                  "@type": "MedicalClinic",
-                  "@id": "https://www.northoncopathology.pe/#sede-ayacucho",
-                  "name": "The North of Oncopathology · Ayacucho",
-                  "parentOrganization": {
-                        "@id": "https://www.northoncopathology.pe/#organizacion"
-                  },
-                  "url": "https://www.northoncopathology.pe/#ubicaciones",
-                  "image": "https://www.northoncopathology.pe/og-image.jpg",
-                  "telephone": "+51934261002",
-                  "email": "thenorthofoncopathology@gmail.com",
-                  "medicalSpecialty": "Pathology",
-                  "address": {
-                        "@type": "PostalAddress",
-                        "streetAddress": "Jr. Asamblea 468",
-                        "addressLocality": "Ayacucho",
-                        "addressCountry": "PE"
-                  },
-                  "geo": {
-                        "@type": "GeoCoordinates",
-                        "latitude": -13.1588,
-                        "longitude": -74.2239
-                  },
-                  "openingHoursSpecification": [
-                        {
-                              "@type": "OpeningHoursSpecification",
-                              "dayOfWeek": [
-                                    "Monday",
-                                    "Tuesday",
-                                    "Wednesday",
-                                    "Thursday",
-                                    "Friday"
-                              ],
-                              "opens": "09:00",
-                              "closes": "17:00"
-                        }
-                  ]
-            },
-            {
-                  "@type": "MedicalClinic",
-                  "@id": "https://www.northoncopathology.pe/#sede-ica",
-                  "name": "The North of Oncopathology · Ica",
-                  "parentOrganization": {
-                        "@id": "https://www.northoncopathology.pe/#organizacion"
-                  },
-                  "url": "https://www.northoncopathology.pe/#ubicaciones",
-                  "image": "https://www.northoncopathology.pe/og-image.jpg",
-                  "telephone": "+51976549012",
-                  "email": "thenorthofoncopathology@gmail.com",
-                  "medicalSpecialty": "Pathology",
-                  "address": {
-                        "@type": "PostalAddress",
-                        "streetAddress": "Av. Cutervo 1137",
-                        "addressLocality": "Ica",
-                        "addressCountry": "PE"
-                  },
-                  "geo": {
-                        "@type": "GeoCoordinates",
-                        "latitude": -14.0678,
-                        "longitude": -75.7286
-                  },
-                  "openingHoursSpecification": [
-                        {
-                              "@type": "OpeningHoursSpecification",
-                              "dayOfWeek": [
-                                    "Monday",
-                                    "Tuesday",
-                                    "Wednesday",
-                                    "Thursday",
-                                    "Friday"
-                              ],
-                              "opens": "09:00",
-                              "closes": "17:00"
-                        }
-                  ]
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://tnm.pe/#web",
+            "url": "https://tnm.pe/",
+            "name": "TNM The North Medical",
+            "inLanguage": "es-PE",
+            "publisher": {
+              "@id": "https://tnm.pe/#organizacion"
             }
-      ]
-}
+          },
+          {
+            "@type": "MedicalOrganization",
+            "@id": "https://tnm.pe/#organizacion",
+            "name": "TNM The North Medical",
+            "alternateName": [
+              "TNM",
+              "The North of Oncopathology"
+            ],
+            "url": "https://tnm.pe/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://tnm.pe/icon-512.png",
+              "width": 512,
+              "height": 512
+            },
+            "image": "https://tnm.pe/og-image.jpg",
+            "description": "Red multicéntrica de patología oncológica en Perú: análisis anatomopatológico, biopsias, inmunohistoquímica y segunda opinión, con seis sedes y recepción de muestras las 24 horas.",
+            "email": "thenorthofoncopathology@gmail.com",
+            "telephone": "+51938683949",
+            "medicalSpecialty": "Pathology",
+            "areaServed": {
+              "@type": "Country",
+              "name": "Perú"
+            },
+            "sameAs": [
+              "https://facebook.com/thenorthoncopathology",
+              "https://instagram.com/thenorth.oncopathology"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+51938683949",
+              "email": "thenorthofoncopathology@gmail.com",
+              "contactType": "customer service",
+              "areaServed": "PE",
+              "availableLanguage": "es"
+            },
+            "department": [
+              {
+                "@id": "https://tnm.pe/#sede-piura"
+              },
+              {
+                "@id": "https://tnm.pe/#sede-chiclayo"
+              },
+              {
+                "@id": "https://tnm.pe/#sede-cajamarca"
+              },
+              {
+                "@id": "https://tnm.pe/#sede-lima"
+              },
+              {
+                "@id": "https://tnm.pe/#sede-ayacucho"
+              },
+              {
+                "@id": "https://tnm.pe/#sede-ica"
+              }
+            ]
+          },
+          {
+            "@type": "MedicalClinic",
+            "@id": "https://tnm.pe/#sede-piura",
+            "name": "TNM The North Medical · Piura",
+            "parentOrganization": {
+              "@id": "https://tnm.pe/#organizacion"
+            },
+            "url": "https://tnm.pe/#ubicaciones",
+            "image": "https://tnm.pe/og-image.jpg",
+            "telephone": "+51938683949",
+            "email": "thenorthofoncopathology@gmail.com",
+            "medicalSpecialty": "Pathology",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Av. Guillermo Irazola D1 Lote 26, Urb. Miraflores",
+              "addressLocality": "Piura",
+              "addressRegion": "Piura",
+              "addressCountry": "PE"
+            },
+            "hasMap": "https://www.google.com/maps/search/?api=1&query=Av.%20Guillermo%20Irazola%20D1%20Lote%2026%2C%20Urb.%20Miraflores%2C%20Piura%2C%20Per%C3%BA",
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday"
+                ],
+                "opens": "09:00",
+                "closes": "17:00"
+              }
+            ]
+          },
+          {
+            "@type": "MedicalClinic",
+            "@id": "https://tnm.pe/#sede-chiclayo",
+            "name": "TNM The North Medical · Chiclayo",
+            "parentOrganization": {
+              "@id": "https://tnm.pe/#organizacion"
+            },
+            "url": "https://tnm.pe/#ubicaciones",
+            "image": "https://tnm.pe/og-image.jpg",
+            "telephone": "+51987603521",
+            "email": "thenorthofoncopathology@gmail.com",
+            "medicalSpecialty": "Pathology",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Av. Salaverry 147",
+              "addressLocality": "Chiclayo",
+              "addressRegion": "Lambayeque",
+              "addressCountry": "PE"
+            },
+            "hasMap": "https://www.google.com/maps/search/?api=1&query=Av.%20Salaverry%20147%2C%20Chiclayo%2C%20Per%C3%BA",
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday"
+                ],
+                "opens": "09:00",
+                "closes": "17:00"
+              }
+            ]
+          },
+          {
+            "@type": "MedicalClinic",
+            "@id": "https://tnm.pe/#sede-cajamarca",
+            "name": "TNM The North Medical · Cajamarca",
+            "parentOrganization": {
+              "@id": "https://tnm.pe/#organizacion"
+            },
+            "url": "https://tnm.pe/#ubicaciones",
+            "image": "https://tnm.pe/og-image.jpg",
+            "telephone": "+51935326109",
+            "email": "thenorthofoncopathology@gmail.com",
+            "medicalSpecialty": "Pathology",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Amalia Puga 866",
+              "addressLocality": "Cajamarca",
+              "addressRegion": "Cajamarca",
+              "addressCountry": "PE"
+            },
+            "hasMap": "https://www.google.com/maps/search/?api=1&query=Amalia%20Puga%20866%2C%20Cajamarca%2C%20Per%C3%BA",
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday"
+                ],
+                "opens": "09:00",
+                "closes": "17:00"
+              }
+            ]
+          },
+          {
+            "@type": "MedicalClinic",
+            "@id": "https://tnm.pe/#sede-lima",
+            "name": "TNM The North Medical · Lima",
+            "parentOrganization": {
+              "@id": "https://tnm.pe/#organizacion"
+            },
+            "url": "https://tnm.pe/#ubicaciones",
+            "image": "https://tnm.pe/og-image.jpg",
+            "telephone": "+51937164019",
+            "email": "thenorthofoncopathology@gmail.com",
+            "medicalSpecialty": "Pathology",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Jirón Gravilla Billón 671, Torre J, 1202",
+              "addressLocality": "Lima",
+              "addressRegion": "Lima",
+              "addressCountry": "PE"
+            },
+            "hasMap": "https://www.google.com/maps/search/?api=1&query=Jir%C3%B3n%20Gravilla%20Bill%C3%B3n%20671%2C%20Torre%20J%2C%201202%2C%20Lima%2C%20Per%C3%BA",
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday"
+                ],
+                "opens": "09:00",
+                "closes": "17:00"
+              }
+            ]
+          },
+          {
+            "@type": "MedicalClinic",
+            "@id": "https://tnm.pe/#sede-ayacucho",
+            "name": "TNM The North Medical · Ayacucho",
+            "parentOrganization": {
+              "@id": "https://tnm.pe/#organizacion"
+            },
+            "url": "https://tnm.pe/#ubicaciones",
+            "image": "https://tnm.pe/og-image.jpg",
+            "telephone": "+51934261002",
+            "email": "thenorthofoncopathology@gmail.com",
+            "medicalSpecialty": "Pathology",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Jr. Asamblea 468",
+              "addressLocality": "Ayacucho",
+              "addressRegion": "Ayacucho",
+              "addressCountry": "PE"
+            },
+            "hasMap": "https://www.google.com/maps/search/?api=1&query=Jr.%20Asamblea%20468%2C%20Ayacucho%2C%20Per%C3%BA",
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday"
+                ],
+                "opens": "09:00",
+                "closes": "17:00"
+              }
+            ]
+          },
+          {
+            "@type": "MedicalClinic",
+            "@id": "https://tnm.pe/#sede-ica",
+            "name": "TNM The North Medical · Ica",
+            "parentOrganization": {
+              "@id": "https://tnm.pe/#organizacion"
+            },
+            "url": "https://tnm.pe/#ubicaciones",
+            "image": "https://tnm.pe/og-image.jpg",
+            "telephone": "+51976549012",
+            "email": "thenorthofoncopathology@gmail.com",
+            "medicalSpecialty": "Pathology",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Av. Cutervo 1137",
+              "addressLocality": "Ica",
+              "addressRegion": "Ica",
+              "addressCountry": "PE"
+            },
+            "hasMap": "https://www.google.com/maps/search/?api=1&query=Av.%20Cutervo%201137%2C%20Ica%2C%20Per%C3%BA",
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday"
+                ],
+                "opens": "09:00",
+                "closes": "17:00"
+              }
+            ]
+          }
+        ]
+      }
     </script>
   </head>
 
