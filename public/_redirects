@@ -1,0 +1,6 @@
+# Los archivos de configuración de Workers se siguen sirviendo como recursos
+# públicos pese al .assetsignore (comprobado en producción). Los redirects se
+# evalúan antes que los assets, así que aquí sí se pueden ocultar.
+/_headers       /  301
+/_redirects     /  301
+/.assetsignore  /  301
