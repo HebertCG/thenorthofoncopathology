@@ -94,9 +94,7 @@ const locations: Location[] = [
 const LocationsSection = () => {
   const [activeLocation, setActiveLocation] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(() =>
-    typeof window !== "undefined" ? window.matchMedia("(min-width: 1024px)").matches : false,
-  );
+  const [isDesktop, setIsDesktop] = useState(false);
   const reduceMotion = useReducedMotion();
   const selected = locations[activeLocation];
 

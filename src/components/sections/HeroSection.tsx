@@ -77,7 +77,10 @@ const HeroSection = () => {
                     className="space-y-4 sm:space-y-6"
                   >
                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white lg:text-foreground leading-tight text-balance">
-                      Diagnóstico <span className="text-[#f99b65] lg:bg-clip-text lg:text-transparent lg:[background-image:var(--gradient-primary)]">Preciso y Oportuno</span> en Oncopatología
+                      <span className="mb-3 block text-xs font-bold uppercase tracking-[0.2em] text-[#f99b65] sm:text-sm">
+                        TNM The North Medical
+                      </span>
+                      Diagnóstico <span className="text-[#f99b65] lg:bg-clip-text lg:text-transparent lg:[background-image:var(--gradient-primary)]">preciso y oportuno</span> en oncopatología
                     </h1>
                     <p className="text-base sm:text-lg md:text-xl text-white/[.82] lg:text-muted-foreground max-w-xl">
                       Estamos contigo cuando más lo necesitas. Equipo multidisciplinario de expertos comprometidos con la

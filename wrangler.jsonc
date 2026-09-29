@@ -9,10 +9,9 @@
   "assets": {
     "directory": "./dist/",
 
-    // La app usa BrowserRouter: cualquier ruta que no exista como archivo debe
-    // devolver index.html con estado 200 para que React Router la resuelva. Sin
-    // esto, entrar directo a una URL profunda daría el 404 de Cloudflare.
-    "not_found_handling": "single-page-application"
+    // El sitio solo publica la portada. Las rutas inexistentes deben responder
+    // con un 404 real para evitar que Google las trate como soft 404.
+    "not_found_handling": "404-page"
   },
 
   "observability": {

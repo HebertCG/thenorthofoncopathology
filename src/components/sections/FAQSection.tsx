@@ -43,7 +43,7 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className="section-padding bg-background">
+    <section id="preguntas-frecuentes" className="section-padding bg-background">
       <div className="container-custom">
         <AnimatedSection className="mx-auto mb-12 max-w-3xl text-center sm:mb-16">
           <h2 className="section-title">Resolvemos tus dudas</h2>
